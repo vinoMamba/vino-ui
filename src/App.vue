@@ -3,7 +3,7 @@
 </template>
 <script lang="ts">
 import {defineComponent} from "vue";
-import VButton from "./components/button";
+import VButton from "./lib/button/button";
 
 export default defineComponent({
   name: "App",
