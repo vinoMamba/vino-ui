@@ -10,12 +10,15 @@
 }
 
 .v-button {
+  display: inline-flex;
+  align-items: center;
   font-size: var(--font-size);
   height: var(--button-height);
   padding: 0 1em;
   border-radius: var(--border-radius);
   border: 1px solid var(--border-color);
   background: var(--button-bg);
+  vertical-align: middle;
 
   &:hover {
     border-color: var(--border-color-hover);
@@ -28,5 +31,14 @@
   &:focus {
     outline: none;
   }
+}
 
+.icon-right {
+  > .icon {
+    order: 2;
+  }
+
+  > .content {
+    order: 1;
+  }
 }
