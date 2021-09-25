@@ -11,7 +11,7 @@ export default defineComponent({
             },
             iconPosition: {
                 type: String as PropType<IconPosition>,
-                default: "left"
+                default: "left",
             }
         },
         setup(props, {slots}) {
