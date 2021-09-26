@@ -16,13 +16,19 @@ export default defineComponent({
             iconPosition: {
                 type: String as PropType<IconPosition>,
                 default: "left",
+            },
+            loading: {
+                type: Boolean,
+                default: false
             }
         },
         setup(props, {slots}) {
             return () => (
                 <button class={{"v-button": true, [`icon-${props.iconPosition}`]: true}}>
                     {props.icon ?
-                        <v-icon class="icon" name={props.icon}/> : ''
+                        <v-icon class="icon" name={props.icon}/> :
+                        props.loading ?
+                            <v-icon class="icon icon-loading" name="loading"/> : ''
                     }
                     <div class="content">
                         {slots.default ? slots.default() : "确定"}
