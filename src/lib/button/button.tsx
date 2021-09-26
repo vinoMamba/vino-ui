@@ -22,7 +22,7 @@ export default defineComponent({
             return () => (
                 <button class={{"v-button": true, [`icon-${props.iconPosition}`]: true}}>
                     {props.icon ?
-                        <v-icon name={props.icon}/> : ''
+                        <v-icon class="icon" name={props.icon}/> : ''
                     }
                     <div class="content">
                         {slots.default ? slots.default() : "确定"}
