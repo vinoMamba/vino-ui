@@ -10,6 +10,13 @@
     <v-button>更多</v-button>
     <v-button icon="right" icon-position="right">下一页</v-button>
   </v-button-group>
+  <v-button-group>
+    <div>
+      <v-button icon="left">上一页</v-button>
+    </div>
+    <v-button>更多</v-button>
+    <v-button icon="right" icon-position="right">下一页</v-button>
+  </v-button-group>
   <h4>icon组件</h4>
   <v-icon name="setting"/>
 </template>
