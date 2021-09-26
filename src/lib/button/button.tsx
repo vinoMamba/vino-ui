@@ -1,6 +1,6 @@
 import {defineComponent, PropType} from "vue";
-import VIcon from "../icon/index";
 import "./style/button.scss";
+import {VIcon} from "../icon";
 
 type  IconPosition = "left" | "right"
 
