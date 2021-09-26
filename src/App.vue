@@ -7,6 +7,7 @@
   <v-button icon="setting" icon-position="right">确定</v-button>
   <v-button-group>
     <v-button icon="left">上一页</v-button>
+    <v-button>更多</v-button>
     <v-button icon="right" icon-position="right">下一页</v-button>
   </v-button-group>
   <h4>icon组件</h4>
