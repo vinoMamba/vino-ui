@@ -25,10 +25,10 @@ export default defineComponent({
         setup(props, {slots}) {
             return () => (
                 <button class={{"v-button": true, [`icon-${props.iconPosition}`]: true}}>
-                    {props.icon ?
-                        <v-icon class="icon" name={props.icon}/> :
-                        props.loading ?
-                            <v-icon class="icon icon-loading" name="loading"/> : ''
+                    {props.loading ?
+                        <v-icon class="icon icon-loading" name="loading"/> :
+                        props.icon ?
+                            <v-icon class="icon" name={props.icon}/> : ''
                     }
                     <div class="content">
                         {slots.default ? slots.default() : "确定"}
