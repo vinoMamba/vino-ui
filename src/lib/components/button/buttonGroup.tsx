@@ -15,8 +15,8 @@ const elementValid = (root: HTMLDivElement) => {
     }
 };
 
-export default defineComponent({
-    name: 'VButtonGroup',
+const ButtonGroup = defineComponent({
+    name: 'ButtonGroup',
     setup(props, {slots}) {
         const root = ref<HTMLDivElement>();
         onMounted(() => {
@@ -29,3 +29,5 @@ export default defineComponent({
         );
     }
 });
+
+export default ButtonGroup;

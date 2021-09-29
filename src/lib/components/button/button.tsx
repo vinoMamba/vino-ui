@@ -1,11 +1,11 @@
 import {defineComponent, PropType} from "vue";
 import "./style/button.scss";
-import {VIcon} from "../icon";
+import {VIcon} from "../index";
 
 type  IconPosition = "left" | "right"
 
-export default defineComponent({
-        name: "VButton",
+const Button = defineComponent({
+        name: "Button",
         components: {
             VIcon
         },
@@ -38,3 +38,5 @@ export default defineComponent({
         }
     }
 );
+
+export default Button;

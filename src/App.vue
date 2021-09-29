@@ -5,6 +5,7 @@
   <v-button :loading="true" icon-position="right">确定</v-button>
   <v-button icon="setting">确定</v-button>
   <v-button icon="setting" icon-position="right">确定</v-button>
+  <h4>buttonGroup组件</h4>
   <v-button-group>
     <v-button icon="left">上一页</v-button>
     <v-button>更多</v-button>
@@ -23,8 +24,7 @@
 </template>
 <script lang="ts">
 import {defineComponent, ref} from "vue";
-import {VButton, VButtonGroup} from "./lib/components/button";
-import {VIcon} from "./lib/components/icon";
+import {VButton, VButtonGroup, VIcon} from "./lib/components";
 
 export default defineComponent({
   name: "App",

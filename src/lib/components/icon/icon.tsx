@@ -1,8 +1,8 @@
 import {defineComponent} from "vue";
 import "./style/icon.scss";
 
-export default defineComponent({
-    name: 'VIcon',
+const Icon = defineComponent({
+    name: 'Icon',
     props: {
         name: {
             type: String,
@@ -16,3 +16,4 @@ export default defineComponent({
         );
     }
 });
+export default Icon;
