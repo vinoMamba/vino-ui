@@ -23,8 +23,8 @@
 </template>
 <script lang="ts">
 import {defineComponent, ref} from "vue";
-import {VButton, VButtonGroup} from "./lib/button";
-import {VIcon} from "./lib/icon";
+import {VButton, VButtonGroup} from "./lib/components/button";
+import {VIcon} from "./lib/components/icon";
 
 export default defineComponent({
   name: "App",
