@@ -1,6 +1,5 @@
 import {mount} from "@vue/test-utils";
-import {VButton} from "../index";
-
+import {VButton} from "../../index";
 
 describe('v-button', () => {
 
