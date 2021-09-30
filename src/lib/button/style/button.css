@@ -2,8 +2,9 @@
 
 .v-button {
   @apply h-8 py-1 px-4 rounded shadow-sm  bg-blue-500 text-white whitespace-nowrap;
-}
 
+  @apply inline-flex flex-row justify-center items-center;
+}
 .v-theme-button {
   @apply active:bg-blue-600;
 }

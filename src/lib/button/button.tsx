@@ -1,5 +1,6 @@
 import { defineComponent, computed } from "vue";
 import "./style/button.css";
+import { VIcon } from "..";
 
 const buttonProps = {
   theme: {
@@ -22,6 +23,7 @@ const buttonProps = {
 
 const Button = defineComponent({
   name: "Button",
+  components: { VIcon },
   props: buttonProps,
   setup(props, { slots }) {
     const classes = computed(() => {
@@ -35,7 +37,12 @@ const Button = defineComponent({
 
     return () => (
       <button class={classes.value}>
-        <span class="content">{slots.default ? slots.default() : "确定"}</span>
+        {props.loading ? (
+          <v-icon class="animate-spin mr-1" name="loading" />
+        ) : (
+          ""
+        )}
+        <span>{slots.default ? slots.default() : "确定"}</span>
       </button>
     );
   },

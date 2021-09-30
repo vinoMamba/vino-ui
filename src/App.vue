@@ -26,11 +26,11 @@
     <v-button level="warning">warning</v-button>
     <v-button level="error">error</v-button>
     <hr />
-    <v-button loading>loading</v-button>
+    <v-button :loading="isLoading" @click="toggleLoading">loading</v-button>
   </div>
 </template>
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 import { VButton, VInput, VIcon } from "./lib";
 
 export default defineComponent({
@@ -41,7 +41,17 @@ export default defineComponent({
     VIcon,
   },
   setup() {
-    return {};
+    const isLoading = ref(false);
+    const toggleLoading = () => {
+      isLoading.value = !isLoading.value;
+      setTimeout(() => {
+        isLoading.value = !isLoading.value;
+      }, 3000);
+    };
+    return {
+      isLoading,
+      toggleLoading,
+    };
   },
 });
 </script>
