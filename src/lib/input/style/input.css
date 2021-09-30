@@ -1,5 +1,13 @@
 @import "../../index.css";
 
+.v-input {
+  @apply inline-flex items-center;
+}
+
+.v-input-error {
+  @apply flex items-center px-1;
+}
+
 .v-input > input {
   @apply h-8 border border-gray-700 outline-none rounded px-2  focus:ring-1 focus:ring-gray-900 focus:shadow-inner;
 }
