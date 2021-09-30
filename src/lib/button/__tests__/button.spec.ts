@@ -2,6 +2,9 @@ import { mount } from "@vue/test-utils";
 import { VButton } from "../..";
 
 describe("v-button", () => {
+  it("存在", () => {
+    mount(VButton);
+  });
   it("可以设置theme为link", () => {
     const wrapper = mount(VButton, {
       props: {

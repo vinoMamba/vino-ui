@@ -1,6 +1,5 @@
 import { defineComponent } from "vue";
 import "./style/icon.css";
-import "./svg";
 
 const iconProps = {
   name: {
