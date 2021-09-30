@@ -1,5 +1,5 @@
 import { mount } from "@vue/test-utils";
-import { VIcon } from "../../index";
+import { VIcon } from "../..";
 
 describe("v-icon", () => {
   it("可以设置icon", () => {

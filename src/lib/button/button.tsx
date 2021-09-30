@@ -1,4 +1,4 @@
-import { defineComponent, computed } from "vue";
+import { defineComponent, computed, PropType } from "vue";
 import "./style/button.css";
 import { VIcon } from "..";
 
@@ -19,6 +19,11 @@ const buttonProps = {
     type: Boolean,
     default: false,
   },
+  onClick: Function as PropType<(e: MouseEvent) => void>,
+  disabled: {
+    type: Boolean,
+    default: false,
+  },
 };
 
 const Button = defineComponent({
@@ -36,7 +41,11 @@ const Button = defineComponent({
     });
 
     return () => (
-      <button class={classes.value}>
+      <button
+        class={classes.value}
+        onClick={props.onClick}
+        disabled={props.disabled}
+      >
         {props.loading ? (
           <v-icon class="animate-spin mr-1" name="loading" />
         ) : (
