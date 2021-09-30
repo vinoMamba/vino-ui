@@ -1,14 +1,17 @@
 @import "../../index.css";
 
 .v-input > input {
-    @apply h-8 border border-blue-300 outline-none rounded px-2  focus:ring-1 focus:ring-blue-400 focus:shadow-inner
+  @apply h-8 border border-gray-700 outline-none rounded px-2  focus:ring-1 focus:ring-gray-900 focus:shadow-inner;
 }
 
 .v-input > input:disabled {
-    @apply text-gray-400 border-gray-400 cursor-not-allowed
+  @apply text-gray-400 border-gray-400 cursor-not-allowed;
 }
 
 .v-input > input:read-only {
-    @apply text-gray-400 border-gray-400 cursor-not-allowed
+  @apply text-gray-400 border-gray-400 cursor-not-allowed;
 }
 
+.error > input {
+  @apply border-red-500 focus:ring-0;
+}
