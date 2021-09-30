@@ -14,6 +14,10 @@ const buttonProps = {
     type: String,
     default: "normal",
   },
+  loading: {
+    type: Boolean,
+    default: false,
+  },
 };
 
 const Button = defineComponent({
@@ -31,7 +35,7 @@ const Button = defineComponent({
 
     return () => (
       <button class={classes.value}>
-        <div class="content">{slots.default ? slots.default() : "确定"}</div>
+        <span class="content">{slots.default ? slots.default() : "确定"}</span>
       </button>
     );
   },
