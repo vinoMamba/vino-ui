@@ -1,5 +1,37 @@
 @import "../../index.css";
 
 .v-button {
-    @apply py-2 px-4 font-semibold rounded-lg shadow-md;
+  @apply h-8 py-1 px-4 rounded shadow-sm  bg-blue-500 text-white whitespace-nowrap;
+}
+
+.v-theme-button {
+  @apply active:bg-blue-600;
+}
+
+.v-theme-link {
+  @apply text-blue-500 bg-white border-b-2 rounded-none  active:text-blue-800;
+}
+
+.v-theme-text {
+  @apply text-blue-500 bg-white  active:text-blue-800 shadow-none;
+}
+
+.v-size-larger {
+  @apply text-lg h-9;
+}
+
+.v-size-small {
+  @apply text-xs h-7;
+}
+
+.v-level-success {
+  @apply bg-green-500 active:bg-green-600;
+}
+
+.v-level-warning {
+  @apply bg-yellow-400 active:bg-yellow-500;
+}
+
+.v-level-error {
+  @apply bg-red-500 active:bg-red-600;
 }
