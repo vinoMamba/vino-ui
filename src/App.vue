@@ -1,7 +1,7 @@
 <template>
   <h6>input组件</h6>
   <div class="box">
-    <v-input value="李四" />
+    <v-input value="李四" @change="inputChange" />
     <v-input value="禁用" :disabled="true" />
     <v-input value="只读" :readonly="true" />
     <v-input value="error" error="error" />
@@ -48,9 +48,13 @@ export default defineComponent({
         isLoading.value = !isLoading.value;
       }, 3000);
     };
+    const inputChange = (value: string) => {
+      console.log(value);
+    };
     return {
       isLoading,
       toggleLoading,
+      inputChange,
     };
   },
 });
