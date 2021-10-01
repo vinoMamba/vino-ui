@@ -23,7 +23,7 @@ const Input = defineComponent({
   name: "Input",
   components: { VIcon },
   props: inputProps,
-  emits: ["change"],
+  emits: ["change", "input", "focus", "blur"],
   setup(props, { emit }) {
     return () => (
       <div class={{ "v-input": true, error: props.error }}>
@@ -33,6 +33,9 @@ const Input = defineComponent({
           readonly={props.readonly}
           value={props.value}
           onChange={(e) => emit("change", (e.target as HTMLInputElement).value)}
+          onInput={(e) => emit("input", (e.target as HTMLInputElement).value)}
+          onBlur={(e) => emit("blur", e)}
+          onFocus={(e) => emit("blur", e)}
         />
         {props.error ? (
           <div class="v-input-error">

@@ -2,6 +2,7 @@
   <h6>input组件</h6>
   <div class="box">
     <v-input value="李四" @change="inputChange" />
+    <v-input @input="inputChange" />
     <v-input value="禁用" :disabled="true" />
     <v-input value="只读" :readonly="true" />
     <v-input value="error" error="error" />
