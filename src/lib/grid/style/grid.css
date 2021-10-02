@@ -1,0 +1,51 @@
+@import "../../index.css";
+
+.v-row {
+  @apply grid  grid-flow-col auto-cols-auto border;
+}
+
+.v-col {
+  @apply h-32 bg-blue-400 border;
+}
+
+.v-col-1 {
+  @apply col-span-1;
+}
+.v-col-2 {
+  @apply col-span-2;
+}
+
+.v-col-3 {
+  @apply col-span-3;
+}
+.v-col-4 {
+  @apply col-span-4;
+}
+
+.v-col-5 {
+  @apply col-span-5;
+}
+.v-col-6 {
+  @apply col-span-6;
+}
+
+.v-col-7 {
+  @apply col-span-7;
+}
+.v-col-8 {
+  @apply col-span-8;
+}
+
+.v-col-9 {
+  @apply col-span-9;
+}
+.v-col-10 {
+  @apply col-span-10;
+}
+
+.v-col-11 {
+  @apply col-span-11;
+}
+.v-col-12 {
+  @apply col-span-12;
+}

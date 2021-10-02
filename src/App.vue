@@ -29,10 +29,26 @@
     <hr />
     <v-button :loading="isLoading" @click="toggleLoading">loading</v-button>
   </div>
+  <h6>Grid</h6>
+  <div class="box">
+    <v-row>
+      <v-col span="1">1</v-col>
+      <v-col span="11">2</v-col>
+    </v-row>
+    <v-row>
+      <v-col>1</v-col>
+      <v-col>2</v-col>
+    </v-row>
+    <v-row>
+      <v-col>1</v-col>
+      <v-col>2</v-col>
+      <v-col>3</v-col>
+    </v-row>
+  </div>
 </template>
 <script lang="ts">
 import { defineComponent, ref } from "vue";
-import { VButton, VInput, VIcon } from "./lib";
+import { VButton, VInput, VIcon, VRow, VCol } from "./lib";
 
 export default defineComponent({
   name: "App",
@@ -40,6 +56,8 @@ export default defineComponent({
     VButton,
     VInput,
     VIcon,
+    VRow,
+    VCol,
   },
   setup() {
     const isLoading = ref(false);
