@@ -32,17 +32,17 @@
   <h6>Grid</h6>
   <div class="box">
     <v-row>
+      <v-col>1</v-col>
+      <v-col>2</v-col>
+    </v-row>
+    <v-row>
       <v-col span="1">1</v-col>
       <v-col span="11">2</v-col>
     </v-row>
     <v-row>
-      <v-col>1</v-col>
-      <v-col>2</v-col>
-    </v-row>
-    <v-row>
-      <v-col>1</v-col>
-      <v-col>2</v-col>
-      <v-col>3</v-col>
+      <v-col span="1" offset="1">1</v-col>
+      <v-col span="2" offset="1">2</v-col>
+      <v-col span="6" offset="1">3</v-col>
     </v-row>
   </div>
 </template>
