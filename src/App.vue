@@ -1,5 +1,5 @@
 <template>
-  <v-tabs>
+  <v-tabs v-model:selected="currentTitle">
     <v-tab title="标题一">tab1</v-tab>
     <v-tab title="标题二">tab2</v-tab>
   </v-tabs>
@@ -15,7 +15,10 @@ export default defineComponent({
     VTab,
   },
   setup() {
-    return {};
+    const currentTitle = ref("标题一");
+    return {
+      currentTitle,
+    };
   },
 });
 </script>
