@@ -7,3 +7,5 @@ export { default as VContent } from "./layout/Content";
 export { default as VHeader } from "./layout/Header";
 export { default as VFooter } from "./layout/Footer";
 export { default as VSider } from "./layout/Sider";
+export { default as VTabs } from "./tabs/Tabs";
+export { default as VTab } from "./tabs/Tab";

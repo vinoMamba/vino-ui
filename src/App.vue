@@ -1,25 +1,18 @@
 <template>
-  <v-layout class="layout">
-    <v-sider>sider</v-sider>
-    <v-layout class="inner-layout">
-      <v-header>header</v-header>
-      <v-content>content</v-content>
-      <v-footer>footer</v-footer>
-    </v-layout>
-  </v-layout>
+  <v-tabs>
+    <v-tab title="tab1">tab1</v-tab>
+    <v-tab title="tab2">tab2</v-tab>
+  </v-tabs>
 </template>
 <script lang="ts">
 import { defineComponent, ref } from "vue";
-import { VLayout, VHeader, VContent, VFooter, VSider } from "./lib";
+import { VTabs, VTab } from "./lib";
 
 export default defineComponent({
   name: "App",
   components: {
-    VLayout,
-    VHeader,
-    VContent,
-    VFooter,
-    VSider,
+    VTabs,
+    VTab,
   },
   setup() {
     return {};
@@ -27,17 +20,4 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
-.layout {
-  height: 100vh;
-}
-.layout > header {
-  height: 10vh;
-}
-.layout > footer {
-  height: 10vh;
-}
-.inner-layout {
-  flex-grow: 1;
-}
-</style>
+<style scoped></style>
