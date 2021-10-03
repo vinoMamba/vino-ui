@@ -1,0 +1,24 @@
+@import "../../index.css";
+
+.v-tab-title {
+  @apply flex flex-row;
+}
+
+.v-tab-title > .v-tab-title-item {
+  @apply h-8 flex justify-center items-center px-4 cursor-pointer bg-blue-300 text-white;
+}
+.v-tab-title > .v-tab-title-item:first-child {
+  @apply rounded-tl-lg;
+}
+
+.v-tab-title > .v-tab-title-item:last-child {
+  @apply rounded-tr-lg;
+}
+
+.v-tab-title > .selected {
+  @apply bg-blue-500;
+}
+
+.v-tab-content {
+  @apply border p-4 border-gray-400;
+}

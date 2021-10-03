@@ -1,6 +1,6 @@
 import { defineComponent, onMounted, computed } from "vue";
 import Tab from "./Tab";
-
+import "./style/tabs.css";
 const tabsProps = {
   selected: {
     type: String,
@@ -13,10 +13,9 @@ const Tabs = defineComponent({
   setup(props, { slots, emit }) {
     const VNodeList = slots.default && slots.default();
     const titleList = VNodeList?.map((item) => item.props?.title);
-    const currentVNode = computed(() => {
-      console.log("执行了");
-      return VNodeList?.filter((item) => item.props?.title === props.selected);
-    });
+    const currentVNode = computed(() =>
+      VNodeList?.filter((item) => item.props?.title === props.selected)
+    );
     onMounted(() => {
       VNodeList?.forEach((item) => {
         if (item.type !== Tab) {
@@ -29,16 +28,23 @@ const Tabs = defineComponent({
     };
     return () => (
       <>
-        {titleList?.map((item) => (
-          <div
-            class={{ selected: props.selected === item }}
-            key={item}
-            onClick={() => select(item)}
-          >
-            {item}
-          </div>
-        ))}
-        <div key={props.selected}>{currentVNode.value}</div>
+        <div class="v-tab-title">
+          {titleList?.map((item) => (
+            <div
+              class={{
+                "v-tab-title-item": true,
+                selected: props.selected === item,
+              }}
+              key={item}
+              onClick={() => select(item)}
+            >
+              {item}
+            </div>
+          ))}
+        </div>
+        <div class="v-tab-content" key={props.selected}>
+          {currentVNode.value}
+        </div>
       </>
     );
   },
