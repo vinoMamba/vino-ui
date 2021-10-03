@@ -4,8 +4,9 @@ import Tab from "./Tab";
 const Tabs = defineComponent({
   name: "Tabs",
   setup(props, { slots }) {
+    const VNodeList = slots.default && slots.default();
+    const titleList = VNodeList?.map((item) => item.props?.title);
     onMounted(() => {
-      const VNodeList = slots.default && slots.default();
       VNodeList?.forEach((item) => {
         if (item.type !== Tab) {
           throw new Error("Tabs 的子组件必须是 Tab !");
@@ -13,7 +14,12 @@ const Tabs = defineComponent({
       });
     });
     return () => (
-      <div class="v-tabs">{slots.default ? slots.default() : ""}</div>
+      <>
+        {titleList?.map((item) => (
+          <div key={item}>{item}</div>
+        ))}
+        <div class="v-tabs">{slots.default ? slots.default() : ""}</div>
+      </>
     );
   },
 });

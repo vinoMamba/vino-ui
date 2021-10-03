@@ -1,7 +1,7 @@
 <template>
   <v-tabs>
-    <v-tab title="tab1">tab1</v-tab>
-    <v-tab title="tab2">tab2</v-tab>
+    <v-tab title="标题一">tab1</v-tab>
+    <v-tab title="标题二">tab2</v-tab>
   </v-tabs>
 </template>
 <script lang="ts">
