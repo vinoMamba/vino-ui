@@ -1,86 +1,43 @@
 <template>
-  <h6>input组件</h6>
-  <div class="box">
-    <v-input value="李四" @change="inputChange" />
-    <v-input @input="inputChange" />
-    <v-input value="禁用" :disabled="true" />
-    <v-input value="只读" :readonly="true" />
-    <v-input value="error" error="error" />
-  </div>
-  <h6>icon组件</h6>
-  <div class="box">
-    <v-icon name="setting" />
-  </div>
-  <h6>button组件</h6>
-  <div class="box">
-    <v-button>Click Me</v-button>
-    <hr />
-    <v-button theme="button">Click Me</v-button>
-    <v-button theme="link">Click Me</v-button>
-    <v-button theme="text">Click Me</v-button>
-    <hr />
-    <v-button size="larger">Click Me</v-button>
-    <v-button size="small">Click Me</v-button>
-    <hr />
-    <v-button level="normal">normal</v-button>
-    <v-button level="success">success</v-button>
-    <v-button level="warning">warning</v-button>
-    <v-button level="error">error</v-button>
-    <hr />
-    <v-button :loading="isLoading" @click="toggleLoading">loading</v-button>
-  </div>
-  <h6>Grid</h6>
-  <div class="box">
-    <v-row>
-      <v-col>1</v-col>
-      <v-col>2</v-col>
-    </v-row>
-    <v-row>
-      <v-col span="1">1</v-col>
-      <v-col span="11">2</v-col>
-    </v-row>
-    <v-row>
-      <v-col span="1" offset="1">1</v-col>
-      <v-col span="2" offset="1">2</v-col>
-      <v-col span="6" offset="1">3</v-col>
-    </v-row>
-  </div>
+  <v-layout class="layout">
+    <v-sider>sider</v-sider>
+    <v-layout class="inner-layout">
+      <v-header>header</v-header>
+      <v-content>content</v-content>
+      <v-footer>footer</v-footer>
+    </v-layout>
+  </v-layout>
 </template>
 <script lang="ts">
 import { defineComponent, ref } from "vue";
-import { VButton, VInput, VIcon, VRow, VCol } from "./lib";
+import { VLayout, VHeader, VContent, VFooter, VSider } from "./lib";
 
 export default defineComponent({
   name: "App",
   components: {
-    VButton,
-    VInput,
-    VIcon,
-    VRow,
-    VCol,
+    VLayout,
+    VHeader,
+    VContent,
+    VFooter,
+    VSider,
   },
   setup() {
-    const isLoading = ref(false);
-    const toggleLoading = () => {
-      isLoading.value = !isLoading.value;
-      setTimeout(() => {
-        isLoading.value = !isLoading.value;
-      }, 3000);
-    };
-    const inputChange = (value: string) => {
-      console.log(value);
-    };
-    return {
-      isLoading,
-      toggleLoading,
-      inputChange,
-    };
+    return {};
   },
 });
 </script>
 
 <style scoped>
-.box {
-  padding: 20px;
+.layout {
+  height: 100vh;
+}
+.layout > header {
+  height: 10vh;
+}
+.layout > footer {
+  height: 10vh;
+}
+.inner-layout {
+  flex-grow: 1;
 }
 </style>
