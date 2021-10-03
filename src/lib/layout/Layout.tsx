@@ -1,5 +1,6 @@
 import { defineComponent, onMounted, ref, computed } from "vue";
 import "./style/layout.css";
+import Sider from "./Sider";
 
 const Layout = defineComponent({
   name: "Layout",
@@ -8,7 +9,7 @@ const Layout = defineComponent({
     onMounted(() => {
       const VNodeList = slots.default ? slots.default() : [];
       VNodeList.forEach((item) => {
-        if ((item.type as any).name === "Sider") {
+        if (item.type === Sider) {
           hasSider.value = true;
         }
       });
