@@ -9,3 +9,4 @@ export { default as VFooter } from "./layout/Footer";
 export { default as VSider } from "./layout/Sider";
 export { default as VTabs } from "./tabs/Tabs";
 export { default as VTab } from "./tabs/Tab";
+export { default as VCascader } from "./cascader/Cascader";

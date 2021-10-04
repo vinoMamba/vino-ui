@@ -1,23 +1,54 @@
 <template>
-  <v-tabs v-model:selected="currentTitle">
-    <v-tab title="标题一">tab1</v-tab>
-    <v-tab title="标题二">tab2</v-tab>
-  </v-tabs>
+  <v-cascader :source="source"> </v-cascader>
 </template>
 <script lang="ts">
 import { defineComponent, ref } from "vue";
-import { VTabs, VTab } from "./lib";
+import { VCascader } from "./lib";
 
 export default defineComponent({
   name: "App",
   components: {
-    VTabs,
-    VTab,
+    VCascader,
   },
   setup() {
-    const currentTitle = ref("标题一");
+    const source = [
+      {
+        name: "浙江",
+        children: [
+          {
+            name: "杭州",
+            children: [
+              { name: "西湖区" },
+              { name: "拱墅区" },
+              { name: "滨江区" },
+            ],
+          },
+          {
+            name: "宁波",
+            children: [
+              { name: "鄞州区" },
+              { name: "镇海区" },
+              { name: "北仑区" },
+            ],
+          },
+        ],
+      },
+      {
+        name: "安徽",
+        children: [
+          {
+            name: "合肥",
+            children: [
+              { name: "高新区" },
+              { name: "政务区" },
+              { name: "庐阳区" },
+            ],
+          },
+        ],
+      },
+    ];
     return {
-      currentTitle,
+      source,
     };
   },
 });
