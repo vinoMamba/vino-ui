@@ -4,6 +4,7 @@
 <script lang="ts">
 import { defineComponent, ref } from "vue";
 import { VCascader } from "./lib";
+import { SourceItem } from "./lib/cascader/types";
 
 export default defineComponent({
   name: "App",
@@ -11,7 +12,7 @@ export default defineComponent({
     VCascader,
   },
   setup() {
-    const source = [
+    const source: SourceItem[] = [
       {
         name: "浙江",
         children: [
@@ -20,15 +21,7 @@ export default defineComponent({
             children: [
               { name: "西湖区" },
               { name: "拱墅区" },
-              { name: "滨江区" },
-            ],
-          },
-          {
-            name: "宁波",
-            children: [
-              { name: "鄞州区" },
-              { name: "镇海区" },
-              { name: "北仑区" },
+              { name: "萧山区" },
             ],
           },
         ],
@@ -39,9 +32,9 @@ export default defineComponent({
           {
             name: "合肥",
             children: [
+              { name: "庐阳区" },
               { name: "高新区" },
               { name: "政务区" },
-              { name: "庐阳区" },
             ],
           },
         ],

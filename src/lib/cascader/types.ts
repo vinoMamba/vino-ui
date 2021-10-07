@@ -1,4 +1,4 @@
 export interface SourceItem {
   name: String;
-  children: Array<SourceItem>;
+  children?: Array<SourceItem>;
 }
