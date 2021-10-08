@@ -1,7 +1,4 @@
 <template>
-  {{ selected[0] && selected[0].name }}
-  {{ selected[1] && selected[1].name }}
-  {{ selected[2] && selected[2].name }}
   <v-cascader
     :source="source"
     :selected="selected"
