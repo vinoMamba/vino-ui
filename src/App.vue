@@ -1,5 +1,10 @@
 <template>
-  <v-cascader :source="source"> </v-cascader>
+  <v-cascader
+    :source="source"
+    :selected="selected"
+    @update:selected="updateSelected"
+  >
+  </v-cascader>
 </template>
 <script lang="ts">
 import { defineComponent, ref } from "vue";
@@ -12,6 +17,11 @@ export default defineComponent({
     VCascader,
   },
   setup() {
+    const updateSelected = (newValue: any) => {
+      console.log(newValue);
+      selected.value = newValue;
+    };
+    const selected = ref([]);
     const source: SourceItem[] = [
       {
         name: "浙江",
@@ -42,6 +52,8 @@ export default defineComponent({
     ];
     return {
       source,
+      selected,
+      updateSelected,
     };
   },
 });

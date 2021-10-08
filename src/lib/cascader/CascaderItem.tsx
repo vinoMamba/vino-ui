@@ -6,30 +6,54 @@ const cascaderItemProps = {
   sourceList: {
     type: Array as PropType<SourceItem[]>,
   },
+  selected: {
+    type: Array as PropType<SourceItem[]>,
+    default: () => [],
+  },
+  level: {
+    type: Number,
+    default: 0,
+  },
 };
 
 const CascaderItem = defineComponent({
   name: "CascaderItem",
   props: cascaderItemProps,
-  setup(props) {
-    const leftSelected = ref<SourceItem>();
+  setup(props, { emit }) {
     const rightItem = computed(() => {
-      if (leftSelected.value && leftSelected.value.children) {
-        return leftSelected.value.children;
+      const currentSelected = props.selected[props.level];
+
+      if (currentSelected && currentSelected.children) {
+        return currentSelected.children;
       } else {
         return null;
       }
     });
+    const onClickLabel = (item: SourceItem) => {
+      const copySelected: SourceItem[] = JSON.parse(
+        JSON.stringify(props.selected)
+      );
+      copySelected[props.level] = item;
+      emit("updateSelected", copySelected);
+    };
+    const updateData = (newValue: SourceItem) => {
+      emit("updateSelected", newValue);
+    };
     return () => (
       <div class="v-cascader-item">
         <div class="left">
           {props.sourceList?.map((item) => (
-            <div onClick={() => (leftSelected.value = item)}>{item.name}</div>
+            <div onClick={() => onClickLabel(item)}>{item.name}</div>
           ))}
         </div>
         <div class="right">
           {rightItem.value ? (
-            <CascaderItem sourceList={rightItem.value}></CascaderItem>
+            <CascaderItem
+              sourceList={rightItem.value}
+              level={props.level + 1}
+              selected={props.selected}
+              onUpdateSelected={updateData}
+            ></CascaderItem>
           ) : (
             ""
           )}
