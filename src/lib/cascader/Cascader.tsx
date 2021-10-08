@@ -12,7 +12,7 @@ const cascaderProps = {
 const Cascader = defineComponent({
   name: "Cascader",
   props: cascaderProps,
-  setup(props, { slots }) {
+  setup(props) {
     const popoverVisible = ref(false);
     const togglePopoverVisible = () => {
       popoverVisible.value = !popoverVisible.value;

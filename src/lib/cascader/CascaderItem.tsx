@@ -1,4 +1,4 @@
-import { defineComponent, PropType, ref, computed } from "vue";
+import { defineComponent, PropType } from "vue";
 import { SourceItem } from "./types";
 
 const cascaderItemProps = {
@@ -10,27 +10,14 @@ const cascaderItemProps = {
 const CascaderItem = defineComponent({
   name: "CascaderItem",
   props: cascaderItemProps,
-  setup(props, { slots }) {
-    const leftSelected = ref<SourceItem>();
-    const rightItems = computed(() => {
-      return leftSelected.value && leftSelected.value.children
-        ? leftSelected.value.children
-        : null;
-    });
+  setup(props) {
     return () => (
       <div class="v-cascader-item">
         <div class="left">
           {props.sourceList?.map((item) => (
-            <div onClick={() => (leftSelected.value = item)}>{item.name}</div>
+            <div>{item.name}</div>
           ))}
         </div>
-        {rightItems ? (
-          <div class="right">
-            <CascaderItem sourceList={rightItems}></CascaderItem>
-          </div>
-        ) : (
-          ""
-        )}
       </div>
     );
   },
