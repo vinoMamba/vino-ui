@@ -34,6 +34,7 @@ const CascaderItem = defineComponent({
         JSON.stringify(props.selected)
       );
       copySelected[props.level] = item;
+      copySelected.splice(props.level + 1);
       emit("updateSelected", copySelected);
     };
     const updateData = (newValue: SourceItem) => {
