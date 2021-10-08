@@ -6,3 +6,12 @@
 .v-cascader-trigger {
   @apply h-8 w-1/3 border border-red-400;
 }
+.v-cascader-item {
+  @apply flex;
+}
+.v-cascader-item > .left {
+  @apply px-4;
+}
+.v-cascader-item > .right {
+  @apply px-4;
+}
