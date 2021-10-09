@@ -1,11 +1,13 @@
 <template>
   <div>11111</div>
-  <v-cascader
-    :source="source"
-    :selected="selected"
-    @update:selected="updateSelected"
-  >
-  </v-cascader>
+  <div class="wrapper">
+    <v-cascader
+      :source="source"
+      :selected="selected"
+      @update:selected="updateSelected"
+    >
+    </v-cascader>
+  </div>
   <div>22222</div>
 </template>
 <script lang="ts">
@@ -61,4 +63,8 @@ export default defineComponent({
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+.wrapper {
+  padding: 48px;
+}
+</style>

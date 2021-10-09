@@ -1,6 +1,7 @@
 import { defineComponent, PropType, ref, computed } from "vue";
 import { SourceItem } from "./types";
 import "./style/cascader.css";
+import { VIcon } from "..";
 
 const cascaderItemProps = {
   sourceList: {
@@ -18,6 +19,7 @@ const cascaderItemProps = {
 
 const CascaderItem = defineComponent({
   name: "CascaderItem",
+  components: { VIcon },
   props: cascaderItemProps,
   setup(props, { emit }) {
     const rightItem = computed(() => {
@@ -45,8 +47,8 @@ const CascaderItem = defineComponent({
         <div class="left">
           {props.sourceList?.map((item) => (
             <div onClick={() => onClickLabel(item)} class="left-label">
-              {item.name}
-              {item.children ? <span class="px-2"> ＞ </span> : null}
+              <span class="px-4">{item.name}</span>
+              {item.children ? <v-icon name="right"></v-icon> : null}
             </div>
           ))}
         </div>

@@ -19,8 +19,8 @@
 }
 
 .v-cascader-item > .left > .left-label {
-  @apply flex items-center justify-center px-4 py-2 cursor-pointer;
-  @apply hover:bg-gray-50;
+  @apply flex items-center justify-between px-4  py-2 cursor-pointer;
+  @apply hover:bg-gray-100;
 }
 .v-cascader-item > .right {
 }
