@@ -12,7 +12,7 @@
   @apply absolute top-full left-0 bg-white shadow;
 }
 .v-cascader-item {
-  @apply flex h-40;
+  @apply flex h-40 overflow-auto;
 }
 .v-cascader-item > .left {
   @apply border-r border-gray-300;
