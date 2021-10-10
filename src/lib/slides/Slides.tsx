@@ -2,9 +2,6 @@ import { defineComponent, onMounted, getCurrentInstance } from "vue";
 
 const Slides = defineComponent({
   name: "Slides",
-  mounted() {
-    console.log(this.$refs);
-  },
   setup(props, { slots }) {
     onMounted(() => {});
     return () => (
