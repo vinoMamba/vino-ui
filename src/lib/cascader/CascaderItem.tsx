@@ -48,7 +48,13 @@ const CascaderItem = defineComponent({
           {props.sourceList?.map((item) => (
             <div onClick={() => onClickLabel(item)} class="left-label">
               <span class="px-4">{item.name}</span>
-              {item.children ? <v-icon name="right"></v-icon> : null}
+              {item.isLeaf ? (
+                !item.isLeaf ? (
+                  <v-icon name="right"></v-icon>
+                ) : null
+              ) : item.children ? (
+                <v-icon name="right"></v-icon>
+              ) : null}
             </div>
           ))}
         </div>

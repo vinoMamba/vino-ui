@@ -10,6 +10,9 @@ const cascaderProps = {
   selected: {
     type: Array as PropType<SourceItem[]>,
   },
+  loadData: {
+    type: Function,
+  },
 };
 
 const Cascader = defineComponent({
@@ -20,8 +23,15 @@ const Cascader = defineComponent({
     const togglePopoverVisible = () => {
       popoverVisible.value = !popoverVisible.value;
     };
-    const updateData = (newValue: SourceItem) => {
+    const updateData = (newValue: SourceItem[]) => {
       emit("update:selected", newValue);
+      const lastItem = newValue[newValue.length - 1];
+
+      const updateSource = (result: SourceItem[]) => {
+        lastItem.children = result;
+      };
+
+      props.loadData && props.loadData(lastItem, updateSource);
     };
     const result = computed(() => {
       return props.selected?.map((item) => item.name).join("/");

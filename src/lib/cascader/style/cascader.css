@@ -9,13 +9,13 @@
   @apply hover:border-gray-500;
 }
 .v-cascader-popover {
-  @apply absolute top-full left-0 bg-white shadow;
+  @apply absolute top-full left-0 bg-white shadow z-40;
 }
 .v-cascader-item {
-  @apply flex h-40 overflow-auto;
+  @apply flex h-40;
 }
 .v-cascader-item > .left {
-  @apply border-r border-gray-300;
+  @apply border-r border-gray-300 overflow-auto;
 }
 
 .v-cascader-item > .left > .left-label {
