@@ -10,3 +10,5 @@ export { default as VSider } from "./layout/Sider";
 export { default as VTabs } from "./tabs/Tabs";
 export { default as VTab } from "./tabs/Tab";
 export { default as VCascader } from "./cascader/Cascader";
+export { default as VSlides } from "./slides/Slides";
+export { default as VSlidesItem } from "./slides/SlidesItem";
