@@ -11,7 +11,6 @@
   <div class="wrapper">
     <v-cascader :source="source1" v-model:selected="selected"> </v-cascader>
   </div>
-  <div>{{ selected }}</div>
   <div>22222</div>
 </template>
 <script lang="ts">

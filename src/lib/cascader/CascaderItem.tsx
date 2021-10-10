@@ -24,7 +24,6 @@ const CascaderItem = defineComponent({
   setup(props, { emit }) {
     const rightItem = computed(() => {
       const currentSelected = props.selected[props.level];
-
       if (currentSelected && currentSelected.children) {
         return currentSelected.children;
       } else {
