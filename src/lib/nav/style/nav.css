@@ -1,0 +1,13 @@
+@import "../../index.css";
+
+.v-nav {
+  @apply flex border;
+}
+
+.v-nav-item {
+  @apply px-4 py-2;
+}
+
+.v-nav-item-selected {
+  @apply bg-blue-400;
+}

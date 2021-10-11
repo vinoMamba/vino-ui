@@ -1,28 +1,24 @@
 <template>
-  <v-slides>
-    <v-slides-item>
-      <div class="box">1</div>
-    </v-slides-item>
-    <v-slides-item>
-      <div class="box">2</div>
-    </v-slides-item>
-    <v-slides-item>
-      <div class="box">3</div>
-    </v-slides-item>
-  </v-slides>
+  {{ selected }}
+  <v-nav v-model:selected="selected">
+    <v-nav-item name="home">首页</v-nav-item>
+    <v-nav-item name="about">关于</v-nav-item>
+    <v-nav-item name="hire">招聘</v-nav-item>
+  </v-nav>
 </template>
 <script lang="ts">
 import { defineComponent, ref, onMounted, unref } from "vue";
-import { VSlides, VSlidesItem } from "./lib";
+import { VNav, VNavItem } from "./lib";
 
 export default defineComponent({
   name: "App",
   components: {
-    VSlides,
-    VSlidesItem,
+    VNavItem,
+    VNav,
   },
   setup() {
-    return {};
+    const selected = ref(["home"]);
+    return { selected };
   },
 });
 </script>

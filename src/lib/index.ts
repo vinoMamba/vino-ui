@@ -12,3 +12,5 @@ export { default as VTab } from "./tabs/Tab";
 export { default as VCascader } from "./cascader/Cascader";
 export { default as VSlides } from "./slides/Slides";
 export { default as VSlidesItem } from "./slides/SlidesItem";
+export { default as VNav } from "./nav/Nav";
+export { default as VNavItem } from "./nav/NavItem";
