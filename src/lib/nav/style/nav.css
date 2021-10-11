@@ -11,3 +11,10 @@
 .v-nav-item-selected {
   @apply bg-blue-400;
 }
+.v-sub-nav {
+  @apply relative;
+  @apply px-4 py-2;
+}
+.v-sub-nav-popover {
+  @apply absolute left-0 top-full border whitespace-nowrap;
+}
