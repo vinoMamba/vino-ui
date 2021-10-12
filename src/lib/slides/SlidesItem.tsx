@@ -1,16 +1,46 @@
-import { defineComponent, ref } from "vue";
+import {
+  defineComponent,
+  ref,
+  inject,
+  onMounted,
+  onUpdated,
+  Transition,
+} from "vue";
+import { slidesjectionKey } from "./Slides";
+import "./style/slides.css";
+
+const slidesItemPorps = {
+  name: {
+    type: String,
+    required: true,
+  },
+} as const;
 
 const SlidesItem = defineComponent({
   name: "SlidesItem",
+  components: { Transition },
+  props: slidesItemPorps,
   setup(props, { slots }) {
     const visible = ref(false);
-    const item = ref(null);
-    return () =>
-      visible.value ? (
-        <div class="v-slides-item" ref={item}>
-          {slots.default ? slots.default() : null}
-        </div>
-      ) : null;
+    const updateVisibleValue = () => {
+      visible.value = props.name === VSlides?.selected.value;
+    };
+    const VSlides = inject(slidesjectionKey);
+    onMounted(() => {
+      updateVisibleValue();
+    });
+    onUpdated(() => {
+      updateVisibleValue();
+    });
+    return () => (
+      <transition name="slide">
+        {visible.value ? (
+          <div class="v-slides-item">
+            {slots.default ? slots.default() : null}
+          </div>
+        ) : null}
+      </transition>
+    );
   },
 });
 

@@ -1,6 +1,18 @@
 <template>
   {{ selected }}
-  <v-nav v-model:selected="selected">
+  <v-slides :selected="selected">
+    <v-slides-item name="1">
+      <div class="box">1</div>
+    </v-slides-item>
+    <v-slides-item name="2">
+      <div class="box">2</div>
+    </v-slides-item>
+    <v-slides-item name="3">
+      <div class="box">3</div>
+    </v-slides-item>
+  </v-slides>
+
+  <!-- <v-nav v-model:selected="selected">
     <v-nav-item name="home">首页</v-nav-item>
     <v-sub-nav>
       <template v-slot:title="title">关于</template>
@@ -9,11 +21,11 @@
       <v-nav-item name="contact">联系电话</v-nav-item>
     </v-sub-nav>
     <v-nav-item name="hire">招聘</v-nav-item>
-  </v-nav>
+  </v-nav> -->
 </template>
 <script lang="ts">
-import { defineComponent, ref, onMounted, unref } from "vue";
-import { VNav, VNavItem, VSubNav } from "./lib";
+import { defineComponent, ref } from "vue";
+import { VNav, VNavItem, VSubNav, VSlides, VSlidesItem } from "./lib";
 
 export default defineComponent({
   name: "App",
@@ -21,9 +33,14 @@ export default defineComponent({
     VNavItem,
     VNav,
     VSubNav,
+    VSlides,
+    VSlidesItem,
   },
   setup() {
-    const selected = ref(["home"]);
+    const selected = ref("1");
+    setTimeout(() => {
+      selected.value = "2";
+    }, 3000);
     return { selected };
   },
 });

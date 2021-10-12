@@ -1,0 +1,19 @@
+@import "../../index.css";
+
+.v-slides {
+  @apply inline-block border;
+}
+
+.v-slides-window {
+}
+
+.slide-enter-active,
+.slide-leave-active {
+  @apply transition-all duration-1000;
+}
+.slide-enter {
+  @apply translate-x-full;
+}
+.slide-leave-to {
+  @apply -translate-x-full;
+}
