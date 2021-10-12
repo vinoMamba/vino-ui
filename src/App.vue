@@ -36,7 +36,7 @@ export default defineComponent({
     VSlidesItem,
   },
   setup() {
-    const selected = ref("");
+    const selected = ref("xxx");
     return { selected };
   },
 });

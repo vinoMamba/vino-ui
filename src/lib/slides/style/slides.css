@@ -8,6 +8,7 @@
 }
 
 .v-slides-window {
+  @apply overflow-hidden;
 }
 
 .v-slides-item {

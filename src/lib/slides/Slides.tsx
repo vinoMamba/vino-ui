@@ -36,7 +36,11 @@ const Slides = defineComponent({
       names.value.push(name);
     };
     const getSelected = () => {
-      return props.selected || names.value[0];
+      if (names.value.includes(props.selected)) {
+        return props.selected;
+      } else {
+        return names.value[0];
+      }
     };
     const playAutomatically = () => {
       let index = names.value.indexOf(getSelected());
@@ -44,7 +48,6 @@ const Slides = defineComponent({
         if (index === names.value.length) {
           index = 0;
         }
-        console.log(names.value[index + 1]);
         emit("update:selected", names.value[index]);
         index++;
         setTimeout(run, 3000);
