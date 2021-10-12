@@ -1,7 +1,7 @@
 @import "../../index.css";
 
 .v-slides {
-  @apply inline-block border;
+  @apply border;
 }
 .v-slides-wrapper {
   @apply relative;
@@ -19,11 +19,17 @@
   @apply transition-all duration-1000;
 }
 .slide-leave-active {
-  @apply absolute left-0 top-0;
+  @apply absolute left-0 top-0 w-full h-full;
 }
 .slide-enter-from {
   @apply translate-x-full;
 }
+.slide-enter-from.reverse {
+  @apply -translate-x-full;
+}
 .slide-leave-to {
   @apply -translate-x-full;
+}
+.slide-leave-to.reverse {
+  @apply translate-x-full;
 }

@@ -54,6 +54,9 @@ const Slides = defineComponent({
       };
       run();
     };
+    const selectItem = (index: number) => {
+      emit("update:selected", names.value[index]);
+    };
     onMounted(() => {
       playAutomatically();
     });
@@ -61,10 +64,18 @@ const Slides = defineComponent({
       selected: computed(() => props.selected),
       getItemName,
     });
+
     return () => (
       <div class="v-slides">
         <div class="v-slides-window">
-          {slots.default ? slots.default() : null}
+          <div class="v-slides-wrapper">
+            {slots.default ? slots.default() : null}
+          </div>
+        </div>
+        <div>
+          {names.value.map((item, index) => {
+            return <span onClick={() => selectItem(index)}>{index}</span>;
+          })}
         </div>
       </div>
     );

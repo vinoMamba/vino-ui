@@ -1,5 +1,5 @@
 <template>
-  <v-slides v-model:selected="selected">
+  <v-slides class="wrapper" v-model:selected="selected">
     <v-slides-item name="one">
       <div class="box">1</div>
     </v-slides-item>
@@ -36,7 +36,7 @@ export default defineComponent({
     VSlidesItem,
   },
   setup() {
-    const selected = ref("xxx");
+    const selected = ref("two");
     return { selected };
   },
 });
@@ -44,9 +44,12 @@ export default defineComponent({
 
 <style scoped>
 .box {
-  width: 200px;
+  width: 100%;
   height: 100px;
   background-color: #ddd;
   border: 1px solid red;
+}
+.wrapper {
+  margin: 100px;
 }
 </style>

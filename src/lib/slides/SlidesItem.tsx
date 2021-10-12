@@ -5,6 +5,7 @@ import {
   onMounted,
   onUpdated,
   Transition,
+  computed,
 } from "vue";
 import { slidesjectionKey } from "./Slides";
 import "./style/slides.css";
@@ -21,11 +22,14 @@ const SlidesItem = defineComponent({
   components: { Transition },
   props: slidesItemPorps,
   setup(props, { slots }) {
+    const VSlides = inject(slidesjectionKey);
     const visible = ref(false);
     const updateVisibleValue = () => {
       visible.value = props.name === VSlides?.selected.value;
     };
-    const VSlides = inject(slidesjectionKey);
+
+    const reverse = ref(true);
+
     onMounted(() => {
       updateVisibleValue();
       VSlides!.getItemName(props.name);
@@ -33,10 +37,16 @@ const SlidesItem = defineComponent({
     onUpdated(() => {
       updateVisibleValue();
     });
+    const classes = computed(() => {
+      return {
+        "v-slides-item": true,
+        reverse: reverse.value,
+      };
+    });
     return () => (
       <transition name="slide">
         {visible.value ? (
-          <div class="v-slides-item">
+          <div class={classes.value}>
             {slots.default ? slots.default() : null}
           </div>
         ) : null}
