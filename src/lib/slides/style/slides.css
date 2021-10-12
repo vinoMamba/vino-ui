@@ -3,15 +3,24 @@
 .v-slides {
   @apply inline-block border;
 }
+.v-slides-wrapper {
+  @apply relative;
+}
 
 .v-slides-window {
+}
+
+.v-slides-item {
 }
 
 .slide-enter-active,
 .slide-leave-active {
   @apply transition-all duration-1000;
 }
-.slide-enter {
+.slide-leave-active {
+  @apply absolute left-0 top-0;
+}
+.slide-enter-from {
   @apply translate-x-full;
 }
 .slide-leave-to {

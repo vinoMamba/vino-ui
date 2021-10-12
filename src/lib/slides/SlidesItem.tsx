@@ -28,6 +28,7 @@ const SlidesItem = defineComponent({
     const VSlides = inject(slidesjectionKey);
     onMounted(() => {
       updateVisibleValue();
+      VSlides!.getItemName(props.name);
     });
     onUpdated(() => {
       updateVisibleValue();

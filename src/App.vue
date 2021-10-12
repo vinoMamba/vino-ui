@@ -1,13 +1,12 @@
 <template>
-  {{ selected }}
-  <v-slides :selected="selected">
-    <v-slides-item name="1">
+  <v-slides v-model:selected="selected">
+    <v-slides-item name="one">
       <div class="box">1</div>
     </v-slides-item>
-    <v-slides-item name="2">
+    <v-slides-item name="two">
       <div class="box">2</div>
     </v-slides-item>
-    <v-slides-item name="3">
+    <v-slides-item name="three">
       <div class="box">3</div>
     </v-slides-item>
   </v-slides>
@@ -37,10 +36,7 @@ export default defineComponent({
     VSlidesItem,
   },
   setup() {
-    const selected = ref("1");
-    setTimeout(() => {
-      selected.value = "2";
-    }, 3000);
+    const selected = ref("");
     return { selected };
   },
 });
