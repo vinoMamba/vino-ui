@@ -5,7 +5,7 @@
 }
 
 .v-nav-item {
-  @apply px-4 py-2;
+  @apply px-4 py-2 cursor-pointer;
 }
 
 .v-nav-item-selected {
@@ -13,8 +13,14 @@
 }
 .v-sub-nav {
   @apply relative;
-  @apply px-4 py-2;
 }
-.v-sub-nav-popover {
+.v-sub-nav > span {
+  @apply block px-4 py-2 cursor-pointer;
+}
+.v-sub-nav .v-sub-nav-popover {
   @apply absolute left-0 top-full border whitespace-nowrap;
+}
+
+.v-sub-nav .v-sub-nav .v-sub-nav-popover {
+  @apply top-0 left-full;
 }

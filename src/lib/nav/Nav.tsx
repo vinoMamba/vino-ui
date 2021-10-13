@@ -1,9 +1,4 @@
-import {
-  defineComponent,
-  onUpdated,
-  InjectionKey,
-  provide,
-} from "vue";
+import { defineComponent, onUpdated, InjectionKey, provide } from "vue";
 import "./style/nav.css";
 
 export interface NavInjection {

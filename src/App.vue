@@ -1,5 +1,5 @@
 <template>
-  <v-slides class="wrapper" v-model:selected="selected">
+  <!-- <v-slides class="wrapper" v-model:selected="selected" :auto-play="false">
     <v-slides-item name="one">
       <div class="box">1</div>
     </v-slides-item>
@@ -9,18 +9,27 @@
     <v-slides-item name="three">
       <div class="box">3</div>
     </v-slides-item>
-  </v-slides>
+  </v-slides> -->
 
-  <!-- <v-nav v-model:selected="selected">
+  <v-nav v-model:selected="selected">
     <v-nav-item name="home">首页</v-nav-item>
     <v-sub-nav>
       <template v-slot:title="title">关于</template>
       <v-nav-item name="culture">企业文化</v-nav-item>
       <v-nav-item name="dev">开发团队</v-nav-item>
-      <v-nav-item name="contact">联系电话</v-nav-item>
+      <v-sub-nav>
+        <template v-slot:title="title">联系方式</template>
+        <v-nav-item name="qq">qq</v-nav-item>
+        <v-nav-item name="wechat">微信</v-nav-item>
+        <v-sub-nav>
+          <template v-slot:title="title">手机</template>
+          <v-nav-item name="yd">移动</v-nav-item>
+          <v-nav-item name="lt">联通</v-nav-item>
+        </v-sub-nav>
+      </v-sub-nav>
     </v-sub-nav>
     <v-nav-item name="hire">招聘</v-nav-item>
-  </v-nav> -->
+  </v-nav>
 </template>
 <script lang="ts">
 import { defineComponent, ref } from "vue";
@@ -36,7 +45,7 @@ export default defineComponent({
     VSlidesItem,
   },
   setup() {
-    const selected = ref("two");
+    const selected = ref(["home"]);
     return { selected };
   },
 });
