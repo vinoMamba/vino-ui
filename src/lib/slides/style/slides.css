@@ -1,8 +1,8 @@
 @import "../../index.css";
 
 .v-slides {
-  @apply border;
 }
+
 .v-slides-wrapper {
   @apply relative;
 }
@@ -11,6 +11,12 @@
   @apply overflow-hidden;
 }
 
+.v-slides-dots {
+}
+
+.v-slides-dots .active {
+  @apply bg-red-700;
+}
 .v-slides-item {
 }
 

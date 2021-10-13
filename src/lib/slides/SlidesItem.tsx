@@ -28,8 +28,7 @@ const SlidesItem = defineComponent({
       visible.value = props.name === VSlides?.selected.value;
     };
 
-    const reverse = ref(true);
-
+    const reverse = ref(VSlides?.reverse);
     onMounted(() => {
       updateVisibleValue();
       VSlides!.getItemName(props.name);

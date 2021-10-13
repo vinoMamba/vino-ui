@@ -12,6 +12,7 @@ import "./style/slides.css";
 export interface Slidesjection {
   selected: ComputedRef<String>;
   getItemName: (name: String) => void;
+  reverse: ComputedRef<Boolean>;
 }
 
 export const slidesjectionKey: InjectionKey<Slidesjection> = Symbol("slides");
@@ -42,27 +43,38 @@ const Slides = defineComponent({
         return names.value[0];
       }
     };
+    const selectedIndex = computed(() => names.value.indexOf(props.selected));
+
     const playAutomatically = () => {
       let index = names.value.indexOf(getSelected());
       const run = () => {
         if (index === names.value.length) {
           index = 0;
         }
-        emit("update:selected", names.value[index]);
+        selectItem(index);
         index++;
         setTimeout(run, 3000);
       };
       run();
     };
+    const lastSelectedIndex = ref(0);
+    const updateLastSelectedIndex = () => {
+      lastSelectedIndex.value = selectedIndex.value;
+    };
+    const reverse = ref(false);
     const selectItem = (index: number) => {
+      updateLastSelectedIndex();
+      reverse.value = lastSelectedIndex.value < index;
       emit("update:selected", names.value[index]);
     };
     onMounted(() => {
+      updateLastSelectedIndex();
       playAutomatically();
     });
     provide(slidesjectionKey, {
       selected: computed(() => props.selected),
       getItemName,
+      reverse: computed(() => reverse.value),
     });
 
     return () => (
@@ -72,9 +84,16 @@ const Slides = defineComponent({
             {slots.default ? slots.default() : null}
           </div>
         </div>
-        <div>
+        <div class="v-slides-dots">
           {names.value.map((item, index) => {
-            return <span onClick={() => selectItem(index)}>{index}</span>;
+            return (
+              <span
+                onClick={() => selectItem(index)}
+                class={{ active: index === selectedIndex.value }}
+              >
+                {index + 1}
+              </span>
+            );
           })}
         </div>
       </div>
