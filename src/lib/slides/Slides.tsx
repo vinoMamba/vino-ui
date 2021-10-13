@@ -11,7 +11,6 @@ import "./style/slides.css";
 
 export interface Slidesjection {
   selected: ComputedRef<String>;
-  getItemName: (name: String) => void;
   reverse: ComputedRef<Boolean>;
 }
 
@@ -33,9 +32,7 @@ const Slides = defineComponent({
   props: slidesProps,
   setup(props, { slots, emit }) {
     const names = ref<String[]>([]);
-    const getItemName = (name: String) => {
-      names.value.push(name);
-    };
+
     const getSelected = () => {
       if (names.value.includes(props.selected)) {
         return props.selected;
@@ -43,7 +40,12 @@ const Slides = defineComponent({
         return names.value[0];
       }
     };
-    const selectedIndex = computed(() => names.value.indexOf(props.selected));
+
+    const selectedIndex = computed(() => {
+      const index = names.value.indexOf(props.selected);
+      return index === -1 ? 0 : index;
+    });
+
     const timerId = ref<number | undefined>(undefined);
     const playAutomatically = () => {
       let index = names.value.indexOf(getSelected());
@@ -68,17 +70,24 @@ const Slides = defineComponent({
     };
     const reverse = ref(false);
     const selectItem = (index: number) => {
+      if (index === names.value.length) {
+        index = 0;
+      }
+      if (index === -1) {
+        index = names.value.length - 1;
+      }
       updateLastSelectedIndex();
       reverse.value = lastSelectedIndex.value < index;
       emit("update:selected", names.value[index]);
     };
     onMounted(() => {
+      const children = slots.default && slots.default();
+      names.value = children?.map((item) => item.props?.name) as String[];
       updateLastSelectedIndex();
       playAutomatically();
     });
     provide(slidesjectionKey, {
       selected: computed(() => props.selected),
-      getItemName,
       reverse: computed(() => reverse.value),
     });
     const onMouseenter = () => {
@@ -87,11 +96,34 @@ const Slides = defineComponent({
     const onMouseleave = () => {
       playAutomatically();
     };
+    const startTouch = ref<Touch | undefined>();
+    const onTouchstart = (e: TouchEvent) => {
+      pause();
+      startTouch.value = e.touches[0];
+    };
+    const ontouchend = (e: TouchEvent) => {
+      const { clientX: x1, clientY: y1 } = startTouch.value as Touch;
+      const { clientX: x2, clientY: y2 } = e.changedTouches[0];
+      const distance = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y1 - y2, 2));
+      const deltaY = Math.abs(y1 - y2);
+      const rate = distance / deltaY;
+      if (rate > 2) {
+        if (x2 > x1) {
+          selectItem(selectedIndex.value + 1);
+        } else {
+          selectItem(selectedIndex.value - 1);
+        }
+      }
+    };
+    const onTouchmove = () => {};
     return () => (
       <div
         class="v-slides"
         onMouseenter={onMouseenter}
         onMouseleave={onMouseleave}
+        onTouchstart={onTouchstart}
+        onTouchmove={onTouchmove}
+        onTouchend={ontouchend}
       >
         <div class="v-slides-window">
           <div class="v-slides-wrapper">
