@@ -15,7 +15,7 @@
   @apply flex justify-center items-center mt-2;
 }
 .v-slides-dots span {
-  @apply inline-flex justify-center items-center w-5 h-5 rounded-full  bg-white cursor-pointer;
+  @apply mx-2 p-1 bg-gray-400 inline-flex justify-center items-center w-5 h-5 rounded-full cursor-pointer;
 }
 
 .v-slides-dots .active {

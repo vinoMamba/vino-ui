@@ -8,7 +8,7 @@ import {
   onMounted,
 } from "vue";
 import "./style/slides.css";
-
+import { VIcon } from "..";
 export interface Slidesjection {
   selected: ComputedRef<String>;
   reverse: ComputedRef<Boolean>;
@@ -30,6 +30,7 @@ const slidesProps = {
 const Slides = defineComponent({
   name: "Slides",
   props: slidesProps,
+  components: { VIcon },
   setup(props, { slots, emit }) {
     const names = ref<String[]>([]);
 
@@ -116,6 +117,13 @@ const Slides = defineComponent({
       }
     };
     const onTouchmove = () => {};
+
+    const onClickPrev = () => {
+      selectItem(selectedIndex.value - 1);
+    };
+    const onClickNext = () => {
+      selectItem(selectedIndex.value + 1);
+    };
     return () => (
       <div
         class="v-slides"
@@ -131,6 +139,9 @@ const Slides = defineComponent({
           </div>
         </div>
         <div class="v-slides-dots">
+          <span onClick={onClickPrev}>
+            <v-icon name="left" />
+          </span>
           {names.value.map((item, index) => {
             return (
               <span
@@ -141,6 +152,9 @@ const Slides = defineComponent({
               </span>
             );
           })}
+          <span onClick={onClickNext}>
+            <v-icon name="right" />
+          </span>
         </div>
       </div>
     );
