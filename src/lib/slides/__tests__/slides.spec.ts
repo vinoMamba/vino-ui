@@ -29,7 +29,7 @@ describe("v-slides", () => {
             `
             }
         });
-        expect(wrapper.html()).toContain('<div class="box1">1</div>');
+        expect(wrapper.find('.box1').exists()).toBe(true);
         done();
     });
 });
