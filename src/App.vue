@@ -30,6 +30,7 @@
     </v-sub-nav>
     <v-nav-item name="hire">招聘</v-nav-item>
   </v-nav>
+  <h1>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</h1>
 </template>
 <script lang="ts">
 import { defineComponent, ref } from "vue";

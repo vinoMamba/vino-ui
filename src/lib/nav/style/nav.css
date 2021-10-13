@@ -1,7 +1,7 @@
 @import "../../index.css";
 
 .v-nav {
-  @apply flex border;
+  @apply flex border-b border-gray-400;
 }
 
 .v-nav-item {
@@ -9,16 +9,43 @@
 }
 
 .v-nav-item-selected {
-  @apply bg-blue-400;
+  @apply relative;
+}
+.v-nav-item-selected::after {
+  content: "";
+  width: 100%;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  @apply border-b-2 border-blue-400;
 }
 .v-sub-nav {
   @apply relative;
+  @apply text-gray-500;
 }
 .v-sub-nav > span {
-  @apply block px-4 py-2 cursor-pointer;
+  @apply block px-4 py-2 cursor-pointer text-black;
+}
+.v-sub-nav .v-sub-nav > span {
+  @apply text-gray-500;
+}
+.v-sub-nav .v-sub-nav > span.selected {
+  @apply text-gray-900;
 }
 .v-sub-nav .v-sub-nav-popover {
-  @apply absolute left-0 top-full border whitespace-nowrap;
+  @apply absolute left-0 top-full whitespace-nowrap bg-white shadow rounded-sm;
+  margin-top: 1px;
+}
+
+.v-sub-nav .v-nav-item {
+  @apply text-gray-500;
+  min-width: 8em;
+}
+.v-sub-nav .v-nav-item-selected {
+  @apply text-gray-900;
+}
+.v-sub-nav .v-nav-item-selected::after {
+  display: none;
 }
 
 .v-sub-nav .v-sub-nav .v-sub-nav-popover {

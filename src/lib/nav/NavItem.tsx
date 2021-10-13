@@ -37,7 +37,7 @@ const NavItem = defineComponent({
       VNav!.addSelected(props.name);
     };
     return () => (
-      <div class={classes.value} onClick={clickItem}>
+      <div class={classes.value} onClick={clickItem} >
         {slots.default && slots.default()}
       </div>
     );

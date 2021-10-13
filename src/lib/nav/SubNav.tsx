@@ -10,7 +10,9 @@ const SubNav = defineComponent({
     };
     return () => (
       <div class="v-sub-nav">
-        <span onClick={onClick}>{slots.title && slots.title()}</span>
+        <span class={{ selected: open.value }} onClick={onClick}>
+          {slots.title && slots.title()}
+        </span>
         {open.value ? (
           <div class="v-sub-nav-popover">
             {slots.default && slots.default()}
