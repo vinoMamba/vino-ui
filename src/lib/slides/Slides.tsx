@@ -44,7 +44,7 @@ const Slides = defineComponent({
       }
     };
     const selectedIndex = computed(() => names.value.indexOf(props.selected));
-
+    const timerId = ref<number | undefined>(undefined);
     const playAutomatically = () => {
       let index = names.value.indexOf(getSelected());
       const run = () => {
@@ -53,10 +53,15 @@ const Slides = defineComponent({
         }
         selectItem(index);
         index++;
-        setTimeout(run, 3000);
+        timerId.value = setTimeout(run, 3000);
       };
       run();
     };
+    const pause = () => {
+      window.clearTimeout(timerId.value);
+      timerId.value = undefined;
+    };
+
     const lastSelectedIndex = ref(0);
     const updateLastSelectedIndex = () => {
       lastSelectedIndex.value = selectedIndex.value;
@@ -76,9 +81,18 @@ const Slides = defineComponent({
       getItemName,
       reverse: computed(() => reverse.value),
     });
-
+    const onMouseenter = () => {
+      pause();
+    };
+    const onMouseleave = () => {
+      playAutomatically();
+    };
     return () => (
-      <div class="v-slides">
+      <div
+        class="v-slides"
+        onMouseenter={onMouseenter}
+        onMouseleave={onMouseleave}
+      >
         <div class="v-slides-window">
           <div class="v-slides-wrapper">
             {slots.default ? slots.default() : null}
