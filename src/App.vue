@@ -2,10 +2,21 @@
   <div class="wrapper">
     <v-popover>
       <template v-slot:content>xxasdasdsadasdasdsadsadasdasdasdxxx</template>
-      <v-button>点我</v-button>
+      <v-button>top</v-button>
+    </v-popover>
+    <v-popover position="bottom">
+      <template v-slot:content>xxasdasdsadasdasdsadsadasdasdasdxxx</template>
+      <v-button>bottom</v-button>
+    </v-popover>
+    <v-popover position="left">
+      <template v-slot:content>xxasdasdsadasdasdsadsadasdasdasdxxx</template>
+      <v-button>left</v-button>
+    </v-popover>
+    <v-popover position="right">
+      <template v-slot:content>xxasdasdsadasdasdsadsadasdasdasdxxx</template>
+      <v-button>right</v-button>
     </v-popover>
   </div>
-
   <!-- <v-nav v-model:selected="selected">
     <v-nav-item name="home">首页</v-nav-item>
     <v-sub-nav>
