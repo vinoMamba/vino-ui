@@ -1,4 +1,4 @@
-import { defineComponent, ref, onMounted, nextTick } from "vue";
+import { defineComponent, ref, nextTick } from "vue";
 import "./style/popover.css";
 const Popover = defineComponent({
   name: "Popover",
@@ -16,35 +16,32 @@ const Popover = defineComponent({
       contentWrapper.value!.style.left = left + window.scrollX + "px";
       contentWrapper.value!.style.top = top + window.scrollY + "px";
     };
-    const listenToDocument = () => {
-      let eventHandle = (e: any) => {
-        if (
-          !contentWrapper.value?.contains(e.target) &&
-          !triggerWrapper.value?.contains(e.target)
-        ) {
-          visible.value = false;
-          document.removeEventListener("click", eventHandle);
-        }
-      };
-      document.addEventListener("click", eventHandle);
-    };
 
-    const onShow = () => {
+    const onclickDocument = (e: any) => {
+      if (
+        !contentWrapper.value?.contains(e.target) &&
+        !triggerWrapper.value?.contains(e.target)
+      ) {
+        close();
+      }
+    };
+    const close = () => {
+      visible.value = false;
+      document.removeEventListener("click", onclickDocument);
+    };
+    const open = () => {
+      visible.value = true;
       nextTick(() => {
         positionContent();
-        listenToDocument();
+        document.addEventListener("click", onclickDocument);
       });
     };
 
     const onclick = (e: any) => {
       if (triggerWrapper.value?.contains(e.target)) {
-        visible.value = !visible.value;
-        if (visible.value) {
-          onShow();
-        }
+        visible.value ? close() : open();
       }
     };
-    onMounted(() => {});
     return () => (
       <div class="v-popover" onClick={onclick}>
         {visible.value && (
