@@ -1,6 +1,9 @@
 <template>
   <div class="wrapper">
-    <v-date-picker></v-date-picker>
+    <v-popover>
+      <template v-slot:content>content</template>
+      <v-button>点我</v-button>
+    </v-popover>
   </div>
 
   <!-- <v-nav v-model:selected="selected">
@@ -25,15 +28,17 @@
 </template>
 <script lang="ts">
 import { defineComponent, ref } from "vue";
-import { VNav, VNavItem, VSubNav, VDatePicker } from "./lib";
+import { VButton, VNav, VNavItem, VSubNav, VDatePicker, VPopover } from "./lib";
 
 export default defineComponent({
   name: "App",
   components: {
+    VButton,
     VNavItem,
     VNav,
     VSubNav,
     VDatePicker,
+    VPopover,
   },
   setup() {
     const selected = ref(["home"]);
