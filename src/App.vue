@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <v-popover>
-      <template v-slot:content>content</template>
+      <template v-slot:content>内容下下 静静奥赛静静奥赛</template>
       <v-button>点我</v-button>
     </v-popover>
   </div>

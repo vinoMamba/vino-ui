@@ -1,8 +1,8 @@
 @import "../../index.css";
 
 .v-popover {
-  @apply inline-block align-top relative border-2 border-red-500;
+  @apply inline-block align-top relative;
 }
 .v-popover-content-wrapper {
-  @apply border absolute bottom-full left-0 shadow;
+  @apply border border-red-600 absolute -translate-y-full;
 }
