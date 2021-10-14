@@ -1,17 +1,9 @@
 <template>
-  <!-- <v-slides class="wrapper" v-model:selected="selected" :auto-play="false">
-    <v-slides-item name="one">
-      <div class="box">1</div>
-    </v-slides-item>
-    <v-slides-item name="two">
-      <div class="box">2</div>
-    </v-slides-item>
-    <v-slides-item name="three">
-      <div class="box">3</div>
-    </v-slides-item>
-  </v-slides> -->
+  <div class="wrapper">
+    <v-date-picker></v-date-picker>
+  </div>
 
-  <v-nav v-model:selected="selected">
+  <!-- <v-nav v-model:selected="selected">
     <v-nav-item name="home">首页</v-nav-item>
     <v-sub-nav>
       <template v-slot:title="title">关于</template>
@@ -29,12 +21,11 @@
       </v-sub-nav>
     </v-sub-nav>
     <v-nav-item name="hire">招聘</v-nav-item>
-  </v-nav>
-  <h1>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</h1>
+  </v-nav> -->
 </template>
 <script lang="ts">
 import { defineComponent, ref } from "vue";
-import { VNav, VNavItem, VSubNav, VSlides, VSlidesItem } from "./lib";
+import { VNav, VNavItem, VSubNav, VDatePicker } from "./lib";
 
 export default defineComponent({
   name: "App",
@@ -42,8 +33,7 @@ export default defineComponent({
     VNavItem,
     VNav,
     VSubNav,
-    VSlides,
-    VSlidesItem,
+    VDatePicker,
   },
   setup() {
     const selected = ref(["home"]);

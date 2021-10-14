@@ -15,3 +15,4 @@ export { default as VSlidesItem } from "./slides/SlidesItem";
 export { default as VNav } from "./nav/Nav";
 export { default as VNavItem } from "./nav/NavItem";
 export { default as VSubNav } from "./nav/SubNav";
+export { default as VDatePicker } from "./datePicker/DatePicker";
