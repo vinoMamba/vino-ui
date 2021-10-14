@@ -21,27 +21,32 @@ const Popover = defineComponent({
       const { width, height, left, top } = (
         triggerWrapper.value as HTMLElement
       ).getBoundingClientRect();
-      if (props.position === "top") {
-        contentWrapper.value!.style.left = left + window.scrollX + "px";
-        contentWrapper.value!.style.top = top + window.scrollY + "px";
-      } else if (props.position === "bottom") {
-        contentWrapper.value!.style.left = left + window.scrollX + "px";
-        contentWrapper.value!.style.top = top + height + window.scrollY + "px";
-      } else if (props.position === "left") {
-        const { height: height2 } = (
-          contentWrapper.value as HTMLElement
-        ).getBoundingClientRect();
-        contentWrapper.value!.style.left = left + window.scrollX + "px";
-        contentWrapper.value!.style.top =
-          top + window.scrollY + (height - height2) / 2 + "px";
-      } else if (props.position === "right") {
-        const { height: height2 } = (
-          contentWrapper.value as HTMLElement
-        ).getBoundingClientRect();
-        contentWrapper.value!.style.left = left + width + window.scrollX + "px";
-        contentWrapper.value!.style.top =
-          top + window.scrollY + (height - height2) / 2 + "px";
-      }
+      const { height: height2 } = (
+        contentWrapper.value as HTMLElement
+      ).getBoundingClientRect();
+      const positions = {
+        top: {
+          top: top + window.scrollY,
+          left: left + window.scrollX,
+        },
+
+        bottom: {
+          top: top + height + window.scrollY,
+          left: left + window.scrollX,
+        },
+
+        left: {
+          top: top + window.scrollY + (height - height2) / 2,
+          left: left + window.scrollX,
+        },
+
+        right: {
+          top: top + window.scrollY + (height - height2) / 2,
+          left: left + width + window.scrollX,
+        },
+      };
+      contentWrapper.value!.style.left = positions[props.position].left + "px";
+      contentWrapper.value!.style.top = positions[props.position].top + "px";
     };
 
     const onclickDocument = (e: any) => {
