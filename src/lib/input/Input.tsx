@@ -35,7 +35,7 @@ const Input = defineComponent({
           onChange={(e) => emit("change", (e.target as HTMLInputElement).value)}
           onInput={(e) => emit("input", (e.target as HTMLInputElement).value)}
           onBlur={(e) => emit("blur", e)}
-          onFocus={(e) => emit("blur", e)}
+          onFocus={(e) => emit("focus", e)}
         />
         {props.error ? (
           <div class="v-input-error">
