@@ -4,5 +4,24 @@
   @apply inline-block align-top relative;
 }
 .v-popover-content-wrapper {
-  @apply border border-red-600 absolute -translate-y-full;
+  @apply border absolute -translate-y-full shadow p-4 rounded-md break-words;
+  margin-top: -10px;
+  max-width: 20em;
+}
+.v-popover-content-wrapper::before,
+.v-popover-content-wrapper::after {
+  content: "";
+  display: block;
+  border: 10px solid transparent;
+  border-top-color: white;
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: calc(100% - 1px);
+  left: 10px;
+}
+
+.v-popover-content-wrapper::before {
+  border-top-color: #e5e5e5;
+  top: 100%;
 }

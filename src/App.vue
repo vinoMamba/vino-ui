@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <v-popover>
-      <template v-slot:content>内容下下 静静奥赛静静奥赛</template>
+      <template v-slot:content>xxasdasdsadasdasdsadsadasdasdasdxxx</template>
       <v-button>点我</v-button>
     </v-popover>
   </div>
@@ -58,6 +58,6 @@ export default defineComponent({
   font-size: 30px;
 }
 .wrapper {
-  margin: 100px;
+  margin: 200px;
 }
 </style>

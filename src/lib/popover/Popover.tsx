@@ -49,7 +49,9 @@ const Popover = defineComponent({
             <span>{slots.content && slots.content()}</span>
           </div>
         )}
-        <span ref={triggerWrapper}>{slots.default && slots.default()}</span>
+        <span ref={triggerWrapper} class="inline-block">
+          {slots.default && slots.default()}
+        </span>
       </div>
     );
   },
