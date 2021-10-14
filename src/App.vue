@@ -17,6 +17,24 @@
       <v-button>right</v-button>
     </v-popover>
   </div>
+  <div class="wrapper">
+    <v-popover trigger="hover">
+      <template v-slot:content>xxasdasdsadasdasdsadsadasdasdasdxxx</template>
+      <v-button>top</v-button>
+    </v-popover>
+    <v-popover trigger="hover" position="bottom">
+      <template v-slot:content>xxasdasdsadasdasdsadsadasdasdasdxxx</template>
+      <v-button>bottom</v-button>
+    </v-popover>
+    <v-popover trigger="hover" position="left">
+      <template v-slot:content>xxasdasdsadasdasdsadsadasdasdasdxxx</template>
+      <v-button>left</v-button>
+    </v-popover>
+    <v-popover trigger="hover" position="right">
+      <template v-slot:content>xxasdasdsadasdasdsadsadasdasdasdxxx</template>
+      <v-button>right</v-button>
+    </v-popover>
+  </div>
   <!-- <v-nav v-model:selected="selected">
     <v-nav-item name="home">首页</v-nav-item>
     <v-sub-nav>

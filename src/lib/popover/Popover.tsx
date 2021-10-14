@@ -1,10 +1,22 @@
-import { defineComponent, ref, nextTick, PropType, computed } from "vue";
+import {
+  defineComponent,
+  ref,
+  nextTick,
+  PropType,
+  computed,
+  onMounted,
+  onUnmounted,
+} from "vue";
 import "./style/popover.css";
 
 const popoverProps = {
   position: {
     type: String as PropType<"top" | "left" | "bottom" | "right">,
     default: "top",
+  },
+  trigger: {
+    type: String as PropType<"click" | "hover">,
+    default: "click",
   },
 };
 
@@ -14,8 +26,8 @@ const Popover = defineComponent({
   setup(props, { slots }) {
     const contentWrapper = ref<HTMLElement | null>(null);
     const triggerWrapper = ref<HTMLElement | null>(null);
+    const popoverWrapper = ref<HTMLElement | null>(null);
     const visible = ref(false);
-
     const positionContent = () => {
       document.body.appendChild(contentWrapper.value as HTMLElement);
       const { width, height, left, top } = (
@@ -80,9 +92,24 @@ const Popover = defineComponent({
         [`v-popover-${props.position}`]: true,
       };
     });
-
+    onMounted(() => {
+      if (props.trigger === "click") {
+        popoverWrapper.value?.addEventListener("click", onclick);
+      } else if (props.trigger === "hover") {
+        popoverWrapper.value?.addEventListener("mouseenter", open);
+        popoverWrapper.value?.addEventListener("mouseleave", close);
+      }
+    });
+    onUnmounted(() => {
+      if (props.trigger === "click") {
+        popoverWrapper.value?.removeEventListener("click", onclick);
+      } else if (props.trigger === "hover") {
+        popoverWrapper.value?.removeEventListener("mouseenter", open);
+        popoverWrapper.value?.removeEventListener("mouseleave", close);
+      }
+    });
     return () => (
-      <div class="v-popover" onClick={onclick}>
+      <div class="v-popover" ref={popoverWrapper}>
         {visible.value && (
           <div ref={contentWrapper} class={classes.value}>
             <span>{slots.content && slots.content()}</span>
