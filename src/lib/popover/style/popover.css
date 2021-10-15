@@ -4,8 +4,8 @@
   @apply inline-block align-top relative;
 }
 .v-popover-content-wrapper {
-  @apply border absolute  shadow p-4 rounded-md break-words bg-white;
-  max-width: 20em;
+  @apply border absolute shadow p-4 rounded-md break-words bg-white;
+  @apply min-w-max;
 }
 .v-popover-content-wrapper::before,
 .v-popover-content-wrapper::after {

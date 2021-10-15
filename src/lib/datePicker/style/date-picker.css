@@ -1,1 +1,8 @@
 @import "../../index.css";
+
+.v-date-picker-pop {
+}
+
+.v-date-picker-nav {
+  @apply border flex justify-center items-center;
+}
