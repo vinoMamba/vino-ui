@@ -4,5 +4,20 @@
 }
 
 .v-date-picker-nav {
-  @apply border flex justify-center items-center;
+  @apply flex  border border-b-0 items-center;
+}
+.v-date-picker-nav > span {
+  @apply px-4 py-2;
+}
+
+.v-date-picker-content-day {
+  @apply border;
+}
+
+.v-date-picker-content-day > div {
+  @apply flex  items-center justify-center;
+}
+.v-date-picker-content-day span {
+  @apply w-8 h-8 inline-block flex-grow cursor-pointer;
+  @apply flex justify-center items-center;
 }

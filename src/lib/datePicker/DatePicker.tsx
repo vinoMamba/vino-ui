@@ -1,14 +1,22 @@
-import { defineComponent, ref, computed } from "vue";
+import { defineComponent, ref, computed, PropType } from "vue";
 import { VInput, VIcon, VPopover } from "..";
 import "./style/date-picker.css";
 import helper from "./utils/dateHelper";
 
 export type DateMode = "months" | "year" | "days";
 
+const datePickerProps = {
+  value: {
+    type: Date as PropType<Date>,
+    default: () => new Date(),
+  },
+} as const;
+
 const DatePicker = defineComponent({
   name: "DatePicker",
   components: { VInput, VIcon, VPopover },
-  setup() {
+  props: datePickerProps,
+  setup(props, { emit }) {
     const mode = ref<DateMode>("days");
     const onclickYear = () => {
       mode.value = "year";
@@ -16,55 +24,44 @@ const DatePicker = defineComponent({
     const onclickMonth = () => {
       mode.value = "months";
     };
-    const dateValue = ref(new Date());
     const visibleDateList = computed(() => {
-      const { year, month } = helper.getYearMonthDate(dateValue.value);
-      const firstDate = helper.firstDayOfMonth(dateValue.value);
-      const lastDate = helper.lastDayOfMonth(dateValue.value);
-
-      const currentMonthList = ref<Date[]>([]);
-      for (let i = firstDate.getDate(); i <= lastDate.getDate(); i++) {
-        currentMonthList.value.push(new Date(year, month, i));
+      const firstDate = helper.firstDayOfMonth(props.value);
+      const weekOfFirst = firstDate.getDay() === 0 ? 6 : firstDate.getDay() - 1;
+      const firstTime = firstDate.getTime() - weekOfFirst * 3600 * 24 * 1000;
+      const visibleDateList = [];
+      for (let i = 0; i < 42; i++) {
+        visibleDateList.push(new Date(firstTime + i * 3600 * 24 * 1000));
       }
-      const lastMonthList = ref<Date[]>([]);
-      const n = firstDate.getDay() === 0 ? 7 : firstDate.getDay() - 1;
-      for (let i = 0; i < n; i++) {
-        lastMonthList.value.push(new Date(year, month, -i));
-      }
-      const nextMonthList = ref<Date[]>([]);
-      const m = 42 - currentMonthList.value.length - n;
-      for (let i = 1; i <= m; i++) {
-        nextMonthList.value.push(new Date(year, month + 1, i));
-      }
-      return [
-        ...lastMonthList.value.reverse(),
-        ...currentMonthList.value,
-        ...nextMonthList.value,
-      ];
+      return visibleDateList;
     });
+    const getDate = (date: Date) => {
+      emit("update:value", date);
+    };
     return () => (
       <div class="border">
         <v-popover position="bottom">
           {{
-            default: () => <v-input type="text" />,
+            default: () => (
+              <v-input value={props.value.toString()} type="text" />
+            ),
             content: () => (
               <div class="v-date-picker-pop">
                 <div class="v-date-picker-nav">
                   <span>
-                    <v-icon name="left" />
+                    <v-icon name="left-left" />
                   </span>
                   <span class="flex">
                     <v-icon name="left" />
-                    <v-icon name="left" />
                   </span>
-                  <span onClick={onclickYear}>2021年</span>
-                  <span onClick={onclickMonth}>8月</span>
-                  <span class="flex">
-                    <v-icon name="right" />
-                    <v-icon name="right" />
+                  <span>
+                    <span onClick={onclickYear}>2021年</span>
+                    <span onClick={onclickMonth}>8月</span>
                   </span>
                   <span>
                     <v-icon name="right" />
+                  </span>
+                  <span>
+                    <v-icon name="right-right" />
                   </span>
                 </div>
                 <div class="v-date-picker-panels">
@@ -73,9 +70,26 @@ const DatePicker = defineComponent({
                   ) : mode.value === "months" ? (
                     <div class="v-date-picker-content">月</div>
                   ) : (
-                    <div class="v-date-picker-content">
-                      {visibleDateList.value.map((item) => {
-                        return <span>{item.getDate()}</span>;
+                    <div class="v-date-picker-content-day">
+                      <div>
+                        {["一", "二", "三", "四", "五", "六", "日"].map((i) => {
+                          return <span>{i}</span>;
+                        })}
+                      </div>
+                      {[0, 1, 2, 3, 4, 5].map((i) => {
+                        return (
+                          <div>
+                            {visibleDateList.value
+                              .slice(i * 7, i * 7 + 7)
+                              .map((item) => {
+                                return (
+                                  <span onClick={() => getDate(item)}>
+                                    {item.getDate()}
+                                  </span>
+                                );
+                              })}
+                          </div>
+                        );
                       })}
                     </div>
                   )}

@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <v-date-picker />
+    <v-date-picker v-model:value="date" />
   </div>
   <!-- <v-nav v-model:selected="selected">
     <v-nav-item name="home">首页</v-nav-item>
@@ -37,8 +37,9 @@ export default defineComponent({
     VPopover,
   },
   setup() {
+    const date = ref(new Date());
     const selected = ref(["home"]);
-    return { selected };
+    return { selected, date };
   },
 });
 </script>

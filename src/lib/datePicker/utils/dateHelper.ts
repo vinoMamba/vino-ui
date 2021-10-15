@@ -1,7 +1,6 @@
 export default {
   firstDayOfMonth(date: Date) {
     const { year, month } = getYearMonthDate(date);
-    console.log(year, month);
     return new Date(year, month, 1);
   },
   lastDayOfMonth(date: Date) {
