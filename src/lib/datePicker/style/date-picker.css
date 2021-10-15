@@ -18,6 +18,17 @@
   @apply flex  items-center justify-center;
 }
 .v-date-picker-content-day span {
-  @apply w-8 h-8 inline-block flex-grow cursor-pointer;
+  @apply w-8 h-8 inline-block flex-grow cursor-pointer text-gray-400;
   @apply flex justify-center items-center;
+}
+
+span.v-date-picker-content-title {
+  @apply text-gray-900;
+}
+
+span.v-date-picker-current-month {
+  @apply text-gray-900;
+}
+span.v-date-picker-selected {
+  @apply bg-gray-400;
 }

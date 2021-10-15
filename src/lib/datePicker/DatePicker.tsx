@@ -32,7 +32,7 @@ const DatePicker = defineComponent({
       }
       return visibleDateList;
     });
-    const getDate = (date: Date) => {
+    const onclickItem = (date: Date) => {
       emit("update:value", date);
     };
 
@@ -76,7 +76,9 @@ const DatePicker = defineComponent({
                     <div class="v-date-picker-content-day">
                       <div>
                         {["一", "二", "三", "四", "五", "六", "日"].map((i) => {
-                          return <span>{i}</span>;
+                          return (
+                            <span class="v-date-picker-content-title">{i}</span>
+                          );
                         })}
                       </div>
                       {[0, 1, 2, 3, 4, 5].map((i) => {
@@ -86,7 +88,17 @@ const DatePicker = defineComponent({
                               .slice(i * 7, i * 7 + 7)
                               .map((item) => {
                                 return (
-                                  <span onClick={() => getDate(item)}>
+                                  <span
+                                    onClick={() => onclickItem(item)}
+                                    class={{
+                                      "v-date-picker-current-month":
+                                        item.getMonth() ===
+                                        props.value.getMonth(),
+                                      "v-date-picker-selected":
+                                        item.getTime() ===
+                                        props.value.getTime(),
+                                    }}
+                                  >
                                     {item.getDate()}
                                   </span>
                                 );
