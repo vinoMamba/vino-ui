@@ -37,7 +37,7 @@ export default defineComponent({
     VPopover,
   },
   setup() {
-    const date = ref(new Date());
+    const date = ref();
     const selected = ref(["home"]);
     return { selected, date };
   },

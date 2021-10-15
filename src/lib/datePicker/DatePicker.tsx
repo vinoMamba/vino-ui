@@ -1,7 +1,7 @@
 import { defineComponent, ref, computed, PropType } from "vue";
 import { VInput, VIcon, VPopover } from "..";
 import "./style/date-picker.css";
-import helper from "./utils/dateHelper";
+import { useDate } from "./hooks/useDate";
 
 export type DateMode = "months" | "year" | "days";
 
@@ -25,12 +25,10 @@ const DatePicker = defineComponent({
       mode.value = "months";
     };
     const visibleDateList = computed(() => {
-      const firstDate = helper.firstDayOfMonth(props.value);
-      const weekOfFirst = firstDate.getDay() === 0 ? 6 : firstDate.getDay() - 1;
-      const firstTime = firstDate.getTime() - weekOfFirst * 3600 * 24 * 1000;
+      const { firstTime } = useDate(props.value);
       const visibleDateList = [];
       for (let i = 0; i < 42; i++) {
-        visibleDateList.push(new Date(firstTime + i * 3600 * 24 * 1000));
+        visibleDateList.push(new Date(firstTime.value + i * 3600 * 24 * 1000));
       }
       return visibleDateList;
     });
@@ -39,8 +37,10 @@ const DatePicker = defineComponent({
     };
 
     const formatDate = computed(() => {
-      const { year, month, day } = helper.getYearMonthDate(props.value);
-      return `${year}/${month + 1}/${day < 10 ? `0${day}` : day}`;
+      const { year, month, day } = useDate(props.value);
+      return `${year.value}/${month.value + 1}/${
+        day.value < 10 ? `0${day.value}` : day.value
+      }`;
     });
     return () => (
       <div class="border">
