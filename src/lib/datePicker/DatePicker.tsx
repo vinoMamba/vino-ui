@@ -37,13 +37,16 @@ const DatePicker = defineComponent({
     const getDate = (date: Date) => {
       emit("update:value", date);
     };
+
+    const formatDate = computed(() => {
+      const { year, month, day } = helper.getYearMonthDate(props.value);
+      return `${year}/${month + 1}/${day < 10 ? `0${day}` : day}`;
+    });
     return () => (
       <div class="border">
         <v-popover position="bottom">
           {{
-            default: () => (
-              <v-input value={props.value.toString()} type="text" />
-            ),
+            default: () => <v-input value={formatDate.value} type="text" />,
             content: () => (
               <div class="v-date-picker-pop">
                 <div class="v-date-picker-nav">
