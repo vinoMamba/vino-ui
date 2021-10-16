@@ -1,11 +1,4 @@
-import {
-  defineComponent,
-  ref,
-  computed,
-  PropType,
-  unref,
-  watchEffect,
-} from "vue";
+import { defineComponent, ref, computed, PropType, unref } from "vue";
 import { VInput, VIcon, VPopover } from "..";
 import "./style/date-picker.css";
 import { useDate } from "./hooks/useDate";
@@ -46,31 +39,20 @@ const DatePicker = defineComponent({
     const onclickItem = (date: Date) => {
       emit("update:value", date);
     };
-    watchEffect(() => {});
     const formatDate = computed(() => {
       const { year, month, day } = useDate(props.value);
       return `${year.value}/${month.value + 1}/${
         day.value < 10 ? `0${day.value}` : day.value
       }`;
     });
-    const onclickPrev = () => {
+    const changeYearMonth = (options: { year: number; month: number }) => {
       const { year, month, day } = useDate(props.value);
-      const newDate = new Date(unref(year), unref(month) - 1, unref(day));
-      emit("update:value", newDate);
-    };
-    const onclickPrevYear = () => {
-      const { year, month, day } = useDate(props.value);
-      const newDate = new Date(unref(year) - 1, unref(month), unref(day));
-      emit("update:value", newDate);
-    };
-    const onclickNext = () => {
-      const { year, month, day } = useDate(props.value);
-      const newDate = new Date(unref(year), unref(month) + 1, unref(day));
-      emit("update:value", newDate);
-    };
-    const onclickNextYear = () => {
-      const { year, month, day } = useDate(props.value);
-      const newDate = new Date(unref(year) + 1, unref(month), unref(day));
+      const { year: year1, month: month1 } = options;
+      const newDate = new Date(
+        unref(year) + year1,
+        unref(month) + month1,
+        unref(day)
+      );
       emit("update:value", newDate);
     };
     return () => (
@@ -81,17 +63,17 @@ const DatePicker = defineComponent({
             content: () => (
               <div class="v-date-picker-pop">
                 <div class="v-date-picker-nav">
-                  <span onClick={onclickPrevYear}>
+                  <span onClick={() => changeYearMonth({ year: -1, month: 0 })}>
                     <v-icon name="left-left" />
                   </span>
-                  <span onClick={onclickPrev}>
+                  <span onClick={() => changeYearMonth({ year: 0, month: -1 })}>
                     <v-icon name="left" />
                   </span>
                   <span>{display.value}</span>
-                  <span onClick={onclickNext}>
+                  <span onClick={() => changeYearMonth({ year: 0, month: 1 })}>
                     <v-icon name="right" />
                   </span>
-                  <span onClick={onclickNextYear}>
+                  <span onClick={() => changeYearMonth({ year: 1, month: 0 })}>
                     <v-icon name="right-right" />
                   </span>
                 </div>
