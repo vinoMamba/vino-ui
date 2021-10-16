@@ -1,4 +1,11 @@
-import { defineComponent, ref, computed, PropType, reactive } from "vue";
+import {
+  defineComponent,
+  ref,
+  computed,
+  PropType,
+  unref,
+  watchEffect,
+} from "vue";
 import { VInput, VIcon, VPopover } from "..";
 import "./style/date-picker.css";
 import { useDate } from "./hooks/useDate";
@@ -18,8 +25,10 @@ const DatePicker = defineComponent({
   props: datePickerProps,
   setup(props, { emit }) {
     const mode = ref<DateMode>("days");
-    const { year, month } = useDate(props.value);
-    const display = reactive({ year, month });
+    const display = computed(() => {
+      const { year, month } = useDate(props.value);
+      return `${unref(year)}年 ${unref(month) + 1}月`;
+    });
     const onclickYear = () => {
       mode.value = "year";
     };
@@ -37,7 +46,7 @@ const DatePicker = defineComponent({
     const onclickItem = (date: Date) => {
       emit("update:value", date);
     };
-
+    watchEffect(() => {});
     const formatDate = computed(() => {
       const { year, month, day } = useDate(props.value);
       return `${year.value}/${month.value + 1}/${
@@ -45,7 +54,24 @@ const DatePicker = defineComponent({
       }`;
     });
     const onclickPrev = () => {
-      console.log(props.value);
+      const { year, month, day } = useDate(props.value);
+      const newDate = new Date(unref(year), unref(month) - 1, unref(day));
+      emit("update:value", newDate);
+    };
+    const onclickPrevYear = () => {
+      const { year, month, day } = useDate(props.value);
+      const newDate = new Date(unref(year) - 1, unref(month), unref(day));
+      emit("update:value", newDate);
+    };
+    const onclickNext = () => {
+      const { year, month, day } = useDate(props.value);
+      const newDate = new Date(unref(year), unref(month) + 1, unref(day));
+      emit("update:value", newDate);
+    };
+    const onclickNextYear = () => {
+      const { year, month, day } = useDate(props.value);
+      const newDate = new Date(unref(year) + 1, unref(month), unref(day));
+      emit("update:value", newDate);
     };
     return () => (
       <div class="border">
@@ -55,20 +81,17 @@ const DatePicker = defineComponent({
             content: () => (
               <div class="v-date-picker-pop">
                 <div class="v-date-picker-nav">
-                  <span>
+                  <span onClick={onclickPrevYear}>
                     <v-icon name="left-left" />
                   </span>
                   <span onClick={onclickPrev}>
                     <v-icon name="left" />
                   </span>
-                  <span>
-                    <span onClick={onclickYear}>{display.year}年</span>
-                    <span onClick={onclickMonth}>{display.month + 1}月</span>
-                  </span>
-                  <span>
+                  <span>{display.value}</span>
+                  <span onClick={onclickNext}>
                     <v-icon name="right" />
                   </span>
-                  <span>
+                  <span onClick={onclickNextYear}>
                     <v-icon name="right-right" />
                   </span>
                 </div>
