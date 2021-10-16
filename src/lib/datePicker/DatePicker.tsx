@@ -3,8 +3,6 @@ import { VInput, VIcon, VPopover } from "..";
 import "./style/date-picker.css";
 import { useDate } from "./hooks/useDate";
 
-export type DateMode = "months" | "year" | "days";
-
 const datePickerProps = {
   value: {
     type: Date as PropType<Date>,
@@ -17,17 +15,10 @@ const DatePicker = defineComponent({
   components: { VInput, VIcon, VPopover },
   props: datePickerProps,
   setup(props, { emit }) {
-    const mode = ref<DateMode>("days");
     const display = computed(() => {
       const { year, month } = useDate(props.value);
       return `${unref(year)}年 ${unref(month) + 1}月`;
     });
-    const onclickYear = () => {
-      mode.value = "year";
-    };
-    const onclickMonth = () => {
-      mode.value = "months";
-    };
     const visibleDateList = computed(() => {
       const { firstTime } = useDate(props.value);
       const visibleDateList = [];
@@ -78,46 +69,39 @@ const DatePicker = defineComponent({
                   </span>
                 </div>
                 <div class="v-date-picker-panels">
-                  {mode.value === "year" ? (
-                    <div class="v-date-picker-content">年</div>
-                  ) : mode.value === "months" ? (
-                    <div class="v-date-picker-content">月</div>
-                  ) : (
-                    <div class="v-date-picker-content-day">
-                      <div>
-                        {["一", "二", "三", "四", "五", "六", "日"].map((i) => {
-                          return (
-                            <span class="v-date-picker-content-title">{i}</span>
-                          );
-                        })}
-                      </div>
-                      {[0, 1, 2, 3, 4, 5].map((i) => {
+                  <div class="v-date-picker-content-day">
+                    <div>
+                      {["一", "二", "三", "四", "五", "六", "日"].map((i) => {
                         return (
-                          <div>
-                            {visibleDateList.value
-                              .slice(i * 7, i * 7 + 7)
-                              .map((item) => {
-                                return (
-                                  <span
-                                    onClick={() => onclickItem(item)}
-                                    class={{
-                                      "v-date-picker-current-month":
-                                        item.getMonth() ===
-                                        props.value.getMonth(),
-                                      "v-date-picker-selected":
-                                        item.getTime() ===
-                                        props.value.getTime(),
-                                    }}
-                                  >
-                                    {item.getDate()}
-                                  </span>
-                                );
-                              })}
-                          </div>
+                          <span class="v-date-picker-content-title">{i}</span>
                         );
                       })}
                     </div>
-                  )}
+                    {[0, 1, 2, 3, 4, 5].map((i) => {
+                      return (
+                        <div>
+                          {visibleDateList.value
+                            .slice(i * 7, i * 7 + 7)
+                            .map((item) => {
+                              return (
+                                <span
+                                  onClick={() => onclickItem(item)}
+                                  class={{
+                                    "v-date-picker-current-month":
+                                      item.getMonth() ===
+                                      props.value.getMonth(),
+                                    "v-date-picker-selected":
+                                      item.getTime() === props.value.getTime(),
+                                  }}
+                                >
+                                  {item.getDate()}
+                                </span>
+                              );
+                            })}
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
                 <div class="v-date-picker-actions"></div>
               </div>
