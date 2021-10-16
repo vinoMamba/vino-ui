@@ -1,4 +1,4 @@
-import { defineComponent, ref, computed, PropType } from "vue";
+import { defineComponent, ref, computed, PropType, reactive } from "vue";
 import { VInput, VIcon, VPopover } from "..";
 import "./style/date-picker.css";
 import { useDate } from "./hooks/useDate";
@@ -18,6 +18,8 @@ const DatePicker = defineComponent({
   props: datePickerProps,
   setup(props, { emit }) {
     const mode = ref<DateMode>("days");
+    const { year, month } = useDate(props.value);
+    const display = reactive({ year, month });
     const onclickYear = () => {
       mode.value = "year";
     };
@@ -42,6 +44,9 @@ const DatePicker = defineComponent({
         day.value < 10 ? `0${day.value}` : day.value
       }`;
     });
+    const onclickPrev = () => {
+      console.log(props.value);
+    };
     return () => (
       <div class="border">
         <v-popover position="bottom">
@@ -53,12 +58,12 @@ const DatePicker = defineComponent({
                   <span>
                     <v-icon name="left-left" />
                   </span>
-                  <span class="flex">
+                  <span onClick={onclickPrev}>
                     <v-icon name="left" />
                   </span>
                   <span>
-                    <span onClick={onclickYear}>2021年</span>
-                    <span onClick={onclickMonth}>8月</span>
+                    <span onClick={onclickYear}>{display.year}年</span>
+                    <span onClick={onclickMonth}>{display.month + 1}月</span>
                   </span>
                   <span>
                     <v-icon name="right" />
