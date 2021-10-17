@@ -4,7 +4,7 @@
   @apply inline-block align-top relative;
 }
 .v-popover-content-wrapper {
-  @apply border absolute shadow p-4 rounded-md break-words bg-white;
+  @apply border border-gray-300 absolute shadow p-4 rounded-md break-words bg-white;
   @apply min-w-max;
 }
 .v-popover-content-wrapper::before,
@@ -27,7 +27,7 @@
   left: 10px;
 }
 .v-popover-top::before {
-  border-top-color: #e5e5e5;
+  border-top-color: #d1d5db;
   top: 100%;
 }
 
@@ -41,7 +41,7 @@
   left: 10px;
 }
 .v-popover-bottom::before {
-  border-bottom-color: #e5e5e5;
+  border-bottom-color: #d1d5db;
   bottom: 100%;
 }
 
@@ -57,7 +57,7 @@
 }
 .v-popover-left::before {
   left: 100%;
-  border-left-color: #e5e5e5;
+  border-left-color: #d1d5db;
 }
 
 .v-popover-right {
@@ -72,5 +72,5 @@
 }
 .v-popover-right::before {
   right: 100%;
-  border-right-color: #e5e5e5;
+  border-right-color: #d1d5db;
 }

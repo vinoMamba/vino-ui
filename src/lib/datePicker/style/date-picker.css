@@ -1,7 +1,7 @@
 @import "../../index.css";
 
 .v-date-picker-pop {
-  @apply border rounded-md;
+  @apply border border-gray-300 rounded-md;
 }
 
 .v-date-picker-nav {
@@ -12,7 +12,7 @@
 }
 
 .v-date-picker-content-day {
-  @apply border border-l-0 border-r-0;
+  @apply border border-l-0 border-r-0 border-gray-300;
 }
 
 .v-date-picker-content-day > div {

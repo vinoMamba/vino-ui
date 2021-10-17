@@ -1,4 +1,4 @@
-import { defineComponent, computed, PropType, unref } from "vue";
+import { defineComponent, computed, ref, PropType, unref } from "vue";
 import { VInput, VIcon, VPopover, VButton } from "..";
 import "./style/date-picker.css";
 import { useDate } from "./hooks/useDate";
@@ -36,9 +36,9 @@ const DatePicker = defineComponent({
         return "";
       }
       const { year, month, day } = useDate(props.value);
-      return `${year.value}/${month.value + 1}/${
-        day.value < 10 ? `0${day.value}` : day.value
-      }`;
+      return `${year.value}/${
+        month.value + 1 < 10 ? `0${month.value + 1}` : month.value + 1
+      }/${day.value < 10 ? `0${day.value}` : day.value}`;
     });
     const changeYearMonth = (options: { year: number; month: number }) => {
       const { year, month, day } = useDate(props.value || new Date());
@@ -55,12 +55,14 @@ const DatePicker = defineComponent({
       const date = new Date(unref(year), unref(month), unref(day));
       emit("update:value", date);
     };
+    const popoverVisible = ref(false);
     const onclickClear = () => {
+      popoverVisible.value = true;
       emit("update:value", undefined);
     };
     return () => (
       <div>
-        <v-popover position="bottom">
+        <v-popover position="bottom" visible={popoverVisible.value}>
           {{
             default: () => <v-input value={formatDate.value} type="text" />,
             content: () => (

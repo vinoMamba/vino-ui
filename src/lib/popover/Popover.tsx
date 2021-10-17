@@ -6,6 +6,7 @@ import {
   computed,
   onMounted,
   onUnmounted,
+  watchEffect,
 } from "vue";
 import "./style/popover.css";
 
@@ -18,12 +19,19 @@ const popoverProps = {
     type: String as PropType<"click" | "hover">,
     default: "click",
   },
+  visible: {
+    type: Boolean,
+    default: false,
+  },
 };
 
 const Popover = defineComponent({
   name: "Popover",
   props: popoverProps,
   setup(props, { slots }) {
+    watchEffect(() => {
+      console.log(props.visible);
+    });
     const contentWrapper = ref<HTMLElement | null>(null);
     const triggerWrapper = ref<HTMLElement | null>(null);
     const popoverWrapper = ref<HTMLElement | null>(null);
