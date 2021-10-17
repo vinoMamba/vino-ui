@@ -9,6 +9,7 @@
   "main": "dist/lib/index.js",
   "module": "dist/lib/index.es.js",
   "scripts": {
+    "docs:dev": "vitepress dev docs",
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "build:lib": "cross-env NODE_ENV=production yarn rollup -c build/rollup.config.js",
@@ -56,6 +57,7 @@
     "ts-jest": "26.4.4",
     "typescript": "^4.4.3",
     "vite": "^2.5.10",
+    "vitepress": "^0.20.0",
     "vue-jest": "^5.0.0-alpha.10",
     "vue-tsc": "^0.3.0"
   },
