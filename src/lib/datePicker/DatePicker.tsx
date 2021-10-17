@@ -16,7 +16,9 @@ const DatePicker = defineComponent({
   setup(props, { emit }) {
     const display = computed(() => {
       const { year, month } = useDate(props.value || new Date());
-      return `${unref(year)}年 ${unref(month) + 1}月`;
+      return `${unref(year)}年 ${
+        unref(month) + 1 < 10 ? `0${unref(month) + 1}` : unref(month) + 1
+      }月`;
     });
     const visibleDateList = computed(() => {
       const { firstTime } = useDate(props.value || new Date());
