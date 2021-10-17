@@ -2,6 +2,7 @@
   <div class="wrapper">
     <v-date-picker v-model:value="date" />
   </div>
+  {{ date }}
   <!-- <v-nav v-model:selected="selected">
     <v-nav-item name="home">首页</v-nav-item>
     <v-sub-nav>

@@ -1,17 +1,18 @@
 @import "../../index.css";
 
 .v-date-picker-pop {
+  @apply border rounded-md;
 }
 
 .v-date-picker-nav {
-  @apply flex  border border-b-0 items-center;
+  @apply flex  items-center;
 }
 .v-date-picker-nav > span {
   @apply px-4 py-2;
 }
 
 .v-date-picker-content-day {
-  @apply border;
+  @apply border border-l-0 border-r-0;
 }
 
 .v-date-picker-content-day > div {
@@ -21,7 +22,12 @@
   @apply w-8 h-8 inline-block flex-grow cursor-pointer text-gray-400;
   @apply flex justify-center items-center;
 }
-
+span.v-date-picker-item {
+  @apply hover:bg-gray-300;
+}
+span.v-date-picker-today {
+  @apply bg-gray-300;
+}
 span.v-date-picker-content-title {
   @apply text-gray-900;
 }
@@ -31,4 +37,11 @@ span.v-date-picker-current-month {
 }
 span.v-date-picker-selected {
   @apply bg-gray-400;
+}
+
+.v-date-picker-actions {
+  @apply flex items-center justify-end px-4;
+}
+.v-date-picker-actions > button {
+  @apply px-2;
 }

@@ -1,26 +1,25 @@
-import { defineComponent, ref, computed, PropType, unref } from "vue";
-import { VInput, VIcon, VPopover } from "..";
+import { defineComponent, computed, PropType, unref } from "vue";
+import { VInput, VIcon, VPopover, VButton } from "..";
 import "./style/date-picker.css";
 import { useDate } from "./hooks/useDate";
 
 const datePickerProps = {
   value: {
     type: Date as PropType<Date>,
-    default: () => new Date(),
   },
 } as const;
 
 const DatePicker = defineComponent({
   name: "DatePicker",
-  components: { VInput, VIcon, VPopover },
+  components: { VInput, VIcon, VPopover, VButton },
   props: datePickerProps,
   setup(props, { emit }) {
     const display = computed(() => {
-      const { year, month } = useDate(props.value);
+      const { year, month } = useDate(props.value || new Date());
       return `${unref(year)}年 ${unref(month) + 1}月`;
     });
     const visibleDateList = computed(() => {
-      const { firstTime } = useDate(props.value);
+      const { firstTime } = useDate(props.value || new Date());
       const visibleDateList = [];
       for (let i = 0; i < 42; i++) {
         visibleDateList.push(new Date(firstTime.value + i * 3600 * 24 * 1000));
@@ -31,13 +30,16 @@ const DatePicker = defineComponent({
       emit("update:value", date);
     };
     const formatDate = computed(() => {
+      if (props.value === undefined) {
+        return "";
+      }
       const { year, month, day } = useDate(props.value);
       return `${year.value}/${month.value + 1}/${
         day.value < 10 ? `0${day.value}` : day.value
       }`;
     });
     const changeYearMonth = (options: { year: number; month: number }) => {
-      const { year, month, day } = useDate(props.value);
+      const { year, month, day } = useDate(props.value || new Date());
       const { year: year1, month: month1 } = options;
       const newDate = new Date(
         unref(year) + year1,
@@ -46,8 +48,16 @@ const DatePicker = defineComponent({
       );
       emit("update:value", newDate);
     };
+    const onclickToday = () => {
+      const { year, month, day } = useDate(new Date());
+      const date = new Date(unref(year), unref(month), unref(day));
+      emit("update:value", date);
+    };
+    const onclickClear = () => {
+      emit("update:value", undefined);
+    };
     return () => (
-      <div class="border">
+      <div>
         <v-popover position="bottom">
           {{
             default: () => <v-input value={formatDate.value} type="text" />,
@@ -87,11 +97,13 @@ const DatePicker = defineComponent({
                                 <span
                                   onClick={() => onclickItem(item)}
                                   class={{
+                                    "v-date-picker-item": true,
                                     "v-date-picker-current-month":
                                       item.getMonth() ===
-                                      props.value.getMonth(),
+                                      (props.value || new Date()).getMonth(),
                                     "v-date-picker-selected":
-                                      item.getTime() === props.value.getTime(),
+                                      item.getTime() ===
+                                      (props.value || new Date()).getTime(),
                                   }}
                                 >
                                   {item.getDate()}
@@ -103,7 +115,14 @@ const DatePicker = defineComponent({
                     })}
                   </div>
                 </div>
-                <div class="v-date-picker-actions"></div>
+                <div class="v-date-picker-actions">
+                  <v-button theme="text" size="small" onClick={onclickClear}>
+                    清除
+                  </v-button>
+                  <v-button theme="text" size="small" onClick={onclickToday}>
+                    今天
+                  </v-button>
+                </div>
               </div>
             ),
           }}
