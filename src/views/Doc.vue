@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <Nav class="doc-nav" showMenuButton={true}></Nav>
+    <Nav class="doc-nav" :showMenuButton="true"></Nav>
     <div class="content-wrapper">
       <aside class="{asideToggle: toggleState.value}">
         <h4>文档</h4>
@@ -19,18 +19,6 @@
         <ul>
           <li>
             <router-link to="/doc/button">Button 组件</router-link>
-          </li>
-          <li>
-            <router-link to="/doc/badge">Badge 组件</router-link>
-          </li>
-          <li>
-            <router-link to="/doc/switch">Switch 组件</router-link>
-          </li>
-          <li>
-            <router-link to="/doc/tab">Tab 组件</router-link>
-          </li>
-          <li>
-            <router-link to="/doc/dialog">Dialog 组件</router-link>
           </li>
         </ul>
       </aside>
