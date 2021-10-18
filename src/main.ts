@@ -3,6 +3,7 @@ import App from "./App.vue";
 import "./index.css";
 import "./lib/icon/svg.js";
 import {setupRouter} from "./router";
+import "github-markdown-css";
 
 function bootstrap() {
     const app = createApp(App);

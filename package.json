@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@vitejs/plugin-vue-jsx": "^1.1.8",
+    "github-markdown-css": "^5.0.0",
     "sass": "^1.42.1",
     "vue": "^3.2.13",
     "vue-router": "4"
@@ -43,6 +44,7 @@
     "cross-env": "^7.0.2",
     "fs-extra": "^10.0.0",
     "jest": "26.0.0",
+    "marked": "^3.0.7",
     "postcss": "^8.3.8",
     "postcss-for": "^2.1.1",
     "postcss-import": "^14.0.2",
