@@ -21,7 +21,8 @@
   "dependencies": {
     "@vitejs/plugin-vue-jsx": "^1.1.8",
     "sass": "^1.42.1",
-    "vue": "^3.2.13"
+    "vue": "^3.2.13",
+    "vue-router": "4"
   },
   "devDependencies": {
     "@babel/core": "^7.15.5",
@@ -33,6 +34,7 @@
     "@rollup/plugin-typescript": "^6.1.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@types/jest": "^27.0.2",
+    "@types/node": "^16.11.1",
     "@vitejs/plugin-vue": "^1.9.0",
     "@vue/babel-plugin-jsx": "^1.0.7",
     "@vue/test-utils": "^2.0.0-rc.15",
