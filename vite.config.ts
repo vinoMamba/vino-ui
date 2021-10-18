@@ -1,3 +1,4 @@
+// @ts-nocheck
 import {defineConfig, loadEnv} from "vite";
 import {resolve} from "path";
 // @ts-ignore
@@ -31,6 +32,6 @@ export default defineConfig(({command, mode}) => {
             //出现跨域问题再来配置
             proxy: {}
         },
-        plugins: createVitePlugins(viteEnv, isBuild)
+        plugins: createVitePlugins(viteEnv, isBuild),
     };
 });

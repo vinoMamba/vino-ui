@@ -21,6 +21,7 @@
   "dependencies": {
     "@vitejs/plugin-vue-jsx": "^1.1.8",
     "github-markdown-css": "^5.0.0",
+    "prismjs": "^1.25.0",
     "sass": "^1.42.1",
     "vue": "^3.2.13",
     "vue-router": "4"

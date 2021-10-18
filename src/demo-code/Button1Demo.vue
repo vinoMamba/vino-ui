@@ -1,10 +1,12 @@
 <template>
-  <h1>ButtonDemo</h1>
+  <v-button>确定</v-button>
 </template>
 <script lang="ts">
 import {defineComponent} from "vue";
+import {VButton} from "../lib";
 
 export default defineComponent({
-  name: 'ButtonDemo'
+  name: "Button1Demo",
+  components: {VButton},
 });
 </script>

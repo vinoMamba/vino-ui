@@ -31,7 +31,7 @@ const DocRouter: RouteRecordRaw = {
         {path: '/doc/intro', component: markdown(intro)},
         {path: '/doc/install', component: markdown(install)},
         {path: '/doc/use', component: markdown(use)},
-        {path: '/doc/button', component: () => import("/src/components/demo/ButtonDemo.vue")},
+        {path: '/doc/button', component: () => import("/src/components/ButtonDemo.vue")},
     ]
 };
 const basicRoutes = [RootRouter, HomeRouter];
