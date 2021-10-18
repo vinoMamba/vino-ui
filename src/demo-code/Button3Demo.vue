@@ -1,6 +1,7 @@
 <template>
-  <v-button>normal</v-button>
-  <v-button :disabled="true">disabled</v-button>
+  <v-button>normal size</v-button>
+  <v-button size="small">small button</v-button>
+  <v-button size="larger">larger button</v-button>
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
