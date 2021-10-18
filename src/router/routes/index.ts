@@ -1,5 +1,5 @@
-import {RouteRecordRaw} from "vue-router";
-import {h} from "vue";
+import { RouteRecordRaw } from "vue-router";
+import { h } from "vue";
 import Markdown from "../../components/Markdown.vue";
 //@ts-ignore
 import intro from "../../markdown/intro.md";
@@ -9,36 +9,40 @@ import use from "../../markdown/use.md";
 import install from "../../markdown/install.md";
 
 const markdown = function (value: string) {
-    return h(Markdown, {content: value, key: value});
+  return h(Markdown, { content: value, key: value });
 };
 
 const RootRouter: RouteRecordRaw = {
-    path: "/",
-    name: "Root",
-    redirect: "/home"
+  path: "/",
+  name: "Root",
+  redirect: "/home",
 };
 const HomeRouter: RouteRecordRaw = {
-    path: "/home",
-    name: "Home",
-    component: () => import("/src/views/Home.vue")
+  path: "/home",
+  name: "Home",
+  component: () => import("/src/views/Home.vue"),
 };
 
 const DocRouter: RouteRecordRaw = {
-    path: "/doc",
-    name: "Doc",
-    component: () => import("/src/views/Doc.vue"),
-    children: [
-        {path: '/doc/intro', component: markdown(intro)},
-        {path: '/doc/install', component: markdown(install)},
-        {path: '/doc/use', component: markdown(use)},
-        {path: '/doc/button', component: () => import("/src/components/ButtonDemo.vue")},
-    ]
+  path: "/doc",
+  name: "Doc",
+  component: () => import("/src/views/Doc.vue"),
+  children: [
+    { path: "/doc/intro", component: markdown(intro) },
+    { path: "/doc/install", component: markdown(install) },
+    { path: "/doc/use", component: markdown(use) },
+    {
+      path: "/doc/button",
+      component: () => import("/src/components/ButtonDemo.vue"),
+    },
+    {
+      path: "/doc/input",
+      component: () => import("/src/components/InputDemo.vue"),
+    },
+  ],
 };
 const basicRoutes = [RootRouter, HomeRouter];
 
-const RouterMap: RouteRecordRaw[] = [
-    ...basicRoutes,
-    DocRouter
-];
+const RouterMap: RouteRecordRaw[] = [...basicRoutes, DocRouter];
 
 export default RouterMap;

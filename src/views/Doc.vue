@@ -20,31 +20,32 @@
           <li>
             <router-link to="/doc/button">Button 组件</router-link>
           </li>
+          <li>
+            <router-link to="/doc/input">Input 组件</router-link>
+          </li>
         </ul>
       </aside>
       <main class="{mainToggle: toggleState.value}">
-        <router-view/>
+        <router-view />
       </main>
     </div>
   </div>
 </template>
 <script lang="ts">
-import {defineComponent} from "vue";
+import { defineComponent } from "vue";
 import Nav from "../components/Nav.vue";
-import {useToggleInject} from "../hooks";
+import { useToggleInject } from "../hooks";
 
 export default defineComponent({
   name: "Doc",
-  components: {Nav},
+  components: { Nav },
   setup() {
-    const {toggleState} = useToggleInject();
+    const { toggleState } = useToggleInject();
     return {
-      toggleState
+      toggleState,
     };
-  }
-
+  },
 });
-
 </script>
 
 <style lang="scss" scoped>
@@ -71,7 +72,6 @@ export default defineComponent({
       transition: all 250ms ease-out;
       background-color: #f0fafe;
 
-
       @media (max-width: 500px) {
         left: -155px;
         &.asideToggle {
@@ -87,14 +87,14 @@ export default defineComponent({
 
       > ul {
         > li {
-
           > a {
-            transition: all .25s ease;
+            transition: all 0.25s ease;
             display: inline-block;
             width: 100%;
             padding: 4px 16px;
 
-            &:hover, &.router-link-active {
+            &:hover,
+            &.router-link-active {
               $hover: lighten(#409eff, 10%);
               background-color: $hover;
               color: white;
