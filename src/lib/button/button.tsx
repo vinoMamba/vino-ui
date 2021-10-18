@@ -37,6 +37,7 @@ const Button = defineComponent({
         [`v-theme-${props.theme}`]: true,
         [`v-size-${props.size}`]: true,
         [`v-level-${props.level}`]: true,
+        [`v-button-disabled`]: props.disabled,
       };
     });
 
