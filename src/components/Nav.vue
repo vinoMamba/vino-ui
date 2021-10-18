@@ -7,10 +7,10 @@
     </div>
     <ol class="menu">
       <li>
-        <router-link to="/doc/button">组件</router-link>
+        <a href="https://github.com/vinoMamba/vino-blog" target="_blank">Blog</a>
       </li>
       <li>
-        <a href="https://gitee.com/vino-wang/vino-ui" target="_blank">码云</a>
+        <a href="https://github.com/vinoMamba/vino-ui" target="_blank">GitHub</a>
       </li>
     </ol>
     <div class="toggle-icon" @click="setToggleState">
