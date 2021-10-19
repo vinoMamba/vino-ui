@@ -43,6 +43,10 @@ const DocRouter: RouteRecordRaw = {
       path: "/doc/layout",
       component: () => import("/src/components/LayoutDemo.vue"),
     },
+    {
+      path: "/doc/tabs",
+      component: () => import("/src/components/TabsDemo.vue"),
+    },
   ],
 };
 const basicRoutes = [RootRouter, HomeRouter];
