@@ -2,15 +2,15 @@
   <nav>
     <div class="logo">
       <router-link to="/">
-        <SvgIcon name="logo"/>
+        <SvgIcon name="logo" class="logo-icon"/>
       </router-link>
     </div>
     <ol class="menu">
       <li>
-        <a href="https://github.com/vinoMamba/vino-blog" target="_blank">Blog</a>
+        <a href="https://github.com/vinoMamba/vino-blog" target="_blank">博客</a>
       </li>
       <li>
-        <a href="https://github.com/vinoMamba/vino-ui" target="_blank">GitHub</a>
+        <router-link to="/doc/button">文档</router-link>
       </li>
     </ol>
     <div class="toggle-icon" @click="setToggleState">
@@ -58,6 +58,7 @@ nav {
     margin-right: auto;
 
     svg {
+      fill: white;
       width: 32px;
       height: 32px;
     }
@@ -69,6 +70,16 @@ nav {
     > li {
       padding: 0 8px;
       margin: 4px;
+
+      > a {
+        color: white;
+        font-style: italic;
+        font-weight: 600;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
     }
   }
 
