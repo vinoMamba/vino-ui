@@ -6,7 +6,7 @@
       <h4>一款基于 <strong>Vue3.0</strong> 、<strong>Tailwindcss</strong> 的简易UI组件库</h4>
       <h4>使用 <strong>TypeScript</strong> ，组件采用 <strong>TSX</strong> 写法</h4>
       <div class="button-wrapper">
-        <router-link to="/doc" className="start">
+        <router-link to="/doc/intro" className="start">
           <SvgIcon name="start"/>
           <span>开始使用</span>
         </router-link>
@@ -95,9 +95,10 @@ body {
   overflow: hidden;
   position: relative;
   height: 100vh;
-  //background: linear-gradient(140deg, rgba(79, 198, 241, 1) 0%, rgba(126, 213, 245, 1) 100%);
-  background: #21d0ee;
-  background: linear-gradient(180deg, rgba(85, 200, 241, 1) 0%, rgba(54, 96, 116, 1) 100%);
+  //background: #21d0ee;
+  //background: linear-gradient(180deg, rgba(85, 200, 241, 1) 0%, rgba(54, 96, 116, 1) 100%);
+  background: rgb(255, 255, 255);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(83, 191, 230, 1) 100%);
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.26);
 
   .home-nav {
@@ -113,20 +114,18 @@ body {
 
     > h1 {
       font-style: italic;
-      color: white;
+      color: #38687d;
       margin: 8px 0;
       font-size: 48px;
       font-weight: 700;
     }
 
     > h4 {
-      font-weight: 600;
-      font-size: 16px;
-      color: white;
+      color: #38687d;
       margin: 8px 0;
 
       strong {
-        font-size: 20px;
+        font-style: italic;
       }
     }
 

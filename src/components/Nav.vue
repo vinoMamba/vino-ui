@@ -51,14 +51,15 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: 1px solid lighten(#7ed5f5, 10%);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.21);
   z-index: 20;
+  background-color: white;
 
   > .logo {
     margin-right: auto;
 
     svg {
-      fill: white;
+      fill: #38687d;
       width: 32px;
       height: 32px;
     }
@@ -72,7 +73,7 @@ nav {
       margin: 4px;
 
       > a {
-        color: white;
+        color: #38687d;
         font-style: italic;
         font-weight: 600;
 
