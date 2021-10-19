@@ -10,6 +10,10 @@
         <span>Start</span>
       </router-link>
     </main>
+    <div class="ocean">
+      <div class="wave"/>
+      <div class="wave"/>
+    </div>
   </div>
 </template>
 
@@ -28,9 +32,61 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+body {
+  overflow: hidden;
+}
+
+.ocean {
+  height: 5vh;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: #38687d;
+}
+
+.wave {
+  background: url('../assets/icons/wave.svg') repeat-x;
+  position: absolute;
+  top: -198px;
+  width: 6400px;
+  height: 198px;
+  animation: wave 7s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+  transform: translate3d(0, 0, 0);
+}
+
+.wave:nth-of-type(2) {
+  top: -175px;
+  animation: wave 7s cubic-bezier( 0.36, 0.45, 0.63, 0.53) -.125s infinite, swell 7s ease -1.25s infinite;
+  opacity: 1;
+}
+
+@keyframes wave {
+  0% {
+    margin-left: 0;
+  }
+  100% {
+    margin-left: -1600px;
+  }
+}
+
+@keyframes swell {
+  0%, 100% {
+    transform: translate3d(0, -25px, 0);
+  }
+  50% {
+    transform: translate3d(0, 5px, 0);
+  }
+}
+
+
 .wrapper {
+  overflow: hidden;
+  position: relative;
   height: 100vh;
-  background: linear-gradient(140deg, rgba(79, 198, 241, 1) 0%, rgba(126, 213, 245, 1) 100%);
+  //background: linear-gradient(140deg, rgba(79, 198, 241, 1) 0%, rgba(126, 213, 245, 1) 100%);
+  background: rgb(85, 200, 241);
+  background: linear-gradient(180deg, rgba(85, 200, 241, 1) 0%, rgba(54, 96, 116, 1) 100%);
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.26);
 
   .home-nav {
