@@ -18,6 +18,7 @@ export default defineConfig(({command, mode}) => {
     const isBuild = command === "build";
     return {
         root,
+        base: '/vino-ui-next',
         resolve: {
             alias: [
                 {

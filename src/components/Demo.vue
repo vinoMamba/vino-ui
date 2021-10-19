@@ -2,7 +2,7 @@
   <div class="demo">
     <h2>{{ title }}</h2>
     <div class="demo-component">
-      <component :is="component" />
+      <component :is="component"/>
     </div>
     <div class="demo-actions">
       <div class="demo-actions-button" @click="hideCode" v-if="codeVisible">
@@ -13,13 +13,13 @@
       </div>
     </div>
     <div class="demo-code" v-if="codeVisible">
-      <pre class="language-html" v-html="html" />
+      <pre class="language-html" v-html="html"/>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { ref, computed, defineComponent } from "vue";
+import {ref, computed, defineComponent} from "vue";
 import "prismjs";
 import "prismjs/themes/prism-tomorrow.css";
 
@@ -28,7 +28,10 @@ const Prism = (window as any).Prism;
 export default defineComponent({
   name: "Demo",
   props: {
-    component: Object,
+    component: {
+      type: Object,
+      required: true
+    },
     title: {
       type: String,
       default: "功能操作",
@@ -37,9 +40,9 @@ export default defineComponent({
   setup(props) {
     const html = computed(() => {
       return Prism.highlight(
-        props.component.__sourceCode,
-        Prism.languages.html,
-        "html"
+          props.component.__sourceCode,
+          Prism.languages.html,
+          "html"
       );
     });
     const showCode = () => (codeVisible.value = true);

@@ -2,7 +2,7 @@ import {defineComponent, PropType, ref, computed, onUnmounted} from "vue";
 import CascaderItem from "./CascaderItem";
 import {SourceItem} from "./types";
 import "./style/cascader.css";
-import {clickOutsideDiretive, removeListener} from "../utils/clickOutside";
+import {clickOutsideDirective, removeListener} from "../utils/clickOutside";
 
 const cascaderProps = {
     source: {
@@ -19,7 +19,7 @@ const cascaderProps = {
 const Cascader = defineComponent({
     name: "Cascader",
     props: cascaderProps,
-    directives: {clickOutside: clickOutsideDiretive},
+    directives: {clickOutside: clickOutsideDirective},
     setup(props, {emit}) {
         const popoverVisible = ref(false);
 
@@ -49,6 +49,7 @@ const Cascader = defineComponent({
             removeListener();
         });
         return () => (
+            // @ts-ignore
             <div class="v-cascader" vClickOutside={close}>
                 <div class="v-cascader-trigger" onClick={toggle}>
                     {result.value}
@@ -58,8 +59,9 @@ const Cascader = defineComponent({
                         <CascaderItem
                             sourceList={props.source}
                             selected={props.selected}
+                            // @ts-ignore
                             onUpdateSelected={updateData}
-                        ></CascaderItem>
+                        />
                     </div>
                 ) : (
                     ""
