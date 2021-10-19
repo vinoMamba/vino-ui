@@ -1,33 +1,45 @@
 <template>
-  <div class="demo">
-    <h2>{{ title }}</h2>
+  <h2 class="title">{{ title }}</h2>
+  <div class="demo" v-for="demo in demoList">
+    <h2>{{ demo.title }}</h2>
     <div class="demo-component">
-      <component :is="component"/>
+      <component :is="demo.component"/>
     </div>
     <div class="demo-actions">
-      <div class="demo-actions-button" @click="hideCode" v-if="codeVisible">
+      <div class="demo-actions-button" @click="demo.codeVisible = false" v-if="demo.codeVisible">
         隐藏示例代码
       </div>
-      <div class="demo-actions-button-watch" @click="showCode" v-else>
+      <div class="demo-actions-button-watch" @click="demo.codeVisible = true" v-else>
         查看示例代码
       </div>
     </div>
-    <div class="demo-code" v-if="codeVisible">
-      <pre class="language-html" v-html="html"/>
+    <div class="demo-code" v-if="demo.codeVisible">
+      <pre class="language-html" v-html="getHtml(demo.component)"/>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import {ref, computed, defineComponent} from "vue";
+import {computed, defineComponent, PropType} from "vue";
 import "prismjs";
 import "prismjs/themes/prism-tomorrow.css";
 
+export type DemoType = {
+  codeVisible: boolean;
+  title: string;
+  component: Object;
+}
+
 const Prism = (window as any).Prism;
+
 
 export default defineComponent({
   name: "Demo",
   props: {
+    demoList: {
+      type: Array as PropType<DemoType[]>,
+      default: () => []
+    },
     component: {
       type: Object,
       required: true
@@ -38,6 +50,13 @@ export default defineComponent({
     },
   },
   setup(props) {
+    const getHtml = (component: any) => {
+      return Prism.highlight(
+          component.__sourceCode,
+          Prism.languages.html,
+          "html"
+      );
+    };
     const html = computed(() => {
       return Prism.highlight(
           props.component.__sourceCode,
@@ -45,15 +64,10 @@ export default defineComponent({
           "html"
       );
     });
-    const showCode = () => (codeVisible.value = true);
-    const hideCode = () => (codeVisible.value = false);
-    const codeVisible = ref(false);
     return {
+      getHtml,
       Prism,
       html,
-      codeVisible,
-      showCode,
-      hideCode,
     };
   },
 });
@@ -61,12 +75,31 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 $border-color: #d9d9d9;
+.title {
+  font-size: 24px;
+  font-weight: 600;
+  font-style: italic;
+  cursor: default;
+  color: #38687d;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 .demo {
   border: 1px solid $border-color;
   margin: 16px 0 32px;
 
+  &:hover {
+    border: 1px solid transparent;
+    box-shadow: 0 0 6px 2px rgba(56, 104, 125, 0.2);
+  }
+
   > h2 {
-    font-size: 18px;
+    color: rgb(0, 0, 0, .6);
+    font-size: 15px;
+    font-weight: 500;
     padding: 8px 16px;
     border-bottom: 1px solid $border-color;
   }

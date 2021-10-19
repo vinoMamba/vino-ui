@@ -1,11 +1,12 @@
 <template>
-  <v-input v-model="value" error="something wrong!!"></v-input>
+  <v-input v-model="value" error="error"></v-input>
 </template>
 <script lang="ts">
-import { defineComponent, ref } from "vue";
-import { VInput } from "../lib";
+import {defineComponent, ref} from "vue";
+import {VInput} from "../lib";
+
 export default defineComponent({
-  components: { VInput },
+  components: {VInput},
   setup() {
     const value = ref("");
     return {
