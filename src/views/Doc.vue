@@ -41,6 +41,11 @@
           <li>
             <router-link to="/doc/slides">Slides 组件</router-link>
           </li>
+          <li>
+            <router-link to="/doc/date-picker"
+              >DatePicker 日期选择器</router-link
+            >
+          </li>
         </ul>
       </aside>
       <main class="{mainToggle: toggleState.value}">

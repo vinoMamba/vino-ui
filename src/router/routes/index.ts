@@ -63,6 +63,10 @@ const DocRouter: RouteRecordRaw = {
       path: "/doc/slides",
       component: () => import("/src/components/SlidesDemo.vue"),
     },
+    {
+      path: "/doc/date-picker",
+      component: () => import("/src/components/DatePickerDemo.vue"),
+    },
   ],
 };
 const basicRoutes = [RootRouter, HomeRouter];
