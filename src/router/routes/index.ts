@@ -47,6 +47,10 @@ const DocRouter: RouteRecordRaw = {
       path: "/doc/tabs",
       component: () => import("/src/components/TabsDemo.vue"),
     },
+    {
+      path: "/doc/popover",
+      component: () => import("/src/components/PopoverDemo.vue"),
+    },
   ],
 };
 const basicRoutes = [RootRouter, HomeRouter];

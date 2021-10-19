@@ -29,6 +29,9 @@
           <li>
             <router-link to="/doc/tabs">Tabs 标签页</router-link>
           </li>
+          <li>
+            <router-link to="/doc/popover">Popover 弹出信息</router-link>
+          </li>
         </ul>
       </aside>
       <main class="{mainToggle: toggleState.value}">
