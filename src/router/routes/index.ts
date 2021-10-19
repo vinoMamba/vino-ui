@@ -51,6 +51,10 @@ const DocRouter: RouteRecordRaw = {
       path: "/doc/popover",
       component: () => import("/src/components/PopoverDemo.vue"),
     },
+    {
+      path: "/doc/cascader",
+      component: () => import("/src/components/CascaderDemo.vue"),
+    },
   ],
 };
 const basicRoutes = [RootRouter, HomeRouter];
