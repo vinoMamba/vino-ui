@@ -1,22 +1,14 @@
 @import "../../index.css";
 
 .v-layout {
-  @apply flex flex-col border;
+  @apply flex flex-col;
 }
 
 .v-has-sider {
   @apply flex flex-row;
 }
-
 .v-header {
-  @apply border;
 }
 .v-content {
-  @apply flex-grow border;
-}
-.v-footer {
-  @apply border;
-}
-.v-sider {
-  @apply border;
+  @apply flex-grow;
 }

@@ -23,6 +23,9 @@
           <li>
             <router-link to="/doc/input">Input 组件</router-link>
           </li>
+          <li>
+            <router-link to="/doc/layout">Layout 布局</router-link>
+          </li>
         </ul>
       </aside>
       <main class="{mainToggle: toggleState.value}">
