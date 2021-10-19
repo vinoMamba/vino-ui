@@ -86,6 +86,10 @@ nav {
 
   > .toggle-icon {
     display: none;
+
+    svg {
+      fill: #38687d;
+    }
   }
 
   @media (max-width: 500px) {
