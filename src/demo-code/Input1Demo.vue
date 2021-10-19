@@ -1,5 +1,5 @@
 <template>
-  <v-input v-model="value"></v-input>
+  <v-input v-model="value" placeholder="基本的 input" />
 </template>
 <script lang="ts">
 import { defineComponent, ref } from "vue";

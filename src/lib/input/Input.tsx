@@ -17,7 +17,12 @@ const inputProps = {
   error: {
     type: String,
   },
-};
+  placeholder: {
+    type: String,
+    default: "",
+  },
+  
+} as const;
 
 const Input = defineComponent({
   name: "Input",
@@ -29,6 +34,7 @@ const Input = defineComponent({
       <div class={{ "v-input": true, error: props.error }}>
         <input
           type="text"
+          placeholder={props.placeholder}
           disabled={props.disabled}
           readonly={props.readonly}
           value={props.value}
