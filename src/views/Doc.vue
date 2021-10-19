@@ -35,6 +35,9 @@
           <li>
             <router-link to="/doc/cascader">Cascader 无限级联选择</router-link>
           </li>
+          <li>
+            <router-link to="/doc/nav">Nav 组件</router-link>
+          </li>
         </ul>
       </aside>
       <main class="{mainToggle: toggleState.value}">

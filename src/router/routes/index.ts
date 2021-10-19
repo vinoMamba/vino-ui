@@ -55,6 +55,10 @@ const DocRouter: RouteRecordRaw = {
       path: "/doc/cascader",
       component: () => import("/src/components/CascaderDemo.vue"),
     },
+    {
+      path: "/doc/nav",
+      component: () => import("/src/components/NavDemo.vue"),
+    },
   ],
 };
 const basicRoutes = [RootRouter, HomeRouter];
