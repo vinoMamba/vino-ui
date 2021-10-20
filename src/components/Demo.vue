@@ -1,6 +1,6 @@
 <template>
   <h2 class="title">{{ title }}</h2>
-  <div class="demo" v-for="demo in demoList" :key="demo.title" :is="demo">
+  <div class="demo" v-for="demo in demoList" :key="demo.title">
     <h2>{{ demo.title }}</h2>
     <div class="demo-component">
       <component :is="demo.component"/>
