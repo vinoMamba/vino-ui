@@ -1,17 +1,20 @@
 <template>
-  <h1>Tabs 标签页</h1>
-  <Demo title="基本使用" :component="Tabs1Demo" />
+  <Demo title="标签页 Tabs" :demo-list="demoList"/>
 </template>
 <script lang="ts">
-import { defineComponent } from "vue";
+import {defineComponent, ref} from "vue";
 import Tabs1Demo from "../demo-code/Tabs1Demo.vue";
-import Demo from "./Demo.vue";
+import Demo, {DemoType} from "./Demo.vue";
+
 export default defineComponent({
   name: "InputDemo",
-  components: { Demo },
+  components: {Demo},
   setup() {
+    const demoList = ref<DemoType[]>([
+      {codeVisible: false, title: '基本使用', component: Tabs1Demo}
+    ]);
     return {
-      Tabs1Demo,
+      demoList
     };
   },
 });
