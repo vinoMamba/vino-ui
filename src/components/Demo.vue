@@ -1,6 +1,6 @@
 <template>
   <h2 class="title">{{ title }}</h2>
-  <div class="demo" v-for="demo in demoList">
+  <div class="demo" v-for="demo in demoList" :key="demo.title" :is="demo">
     <h2>{{ demo.title }}</h2>
     <div class="demo-component">
       <component :is="demo.component"/>
@@ -20,7 +20,7 @@
 </template>
 
 <script lang="ts">
-import {computed, defineComponent, PropType} from "vue";
+import {defineComponent, PropType} from "vue";
 import "prismjs";
 import "prismjs/themes/prism-tomorrow.css";
 
@@ -40,16 +40,12 @@ export default defineComponent({
       type: Array as PropType<DemoType[]>,
       default: () => []
     },
-    component: {
-      type: Object,
-      required: true
-    },
     title: {
       type: String,
       default: "功能操作",
     },
   },
-  setup(props) {
+  setup() {
     const getHtml = (component: any) => {
       return Prism.highlight(
           component.__sourceCode,
@@ -57,17 +53,9 @@ export default defineComponent({
           "html"
       );
     };
-    const html = computed(() => {
-      return Prism.highlight(
-          props.component.__sourceCode,
-          Prism.languages.html,
-          "html"
-      );
-    });
     return {
       getHtml,
       Prism,
-      html,
     };
   },
 });

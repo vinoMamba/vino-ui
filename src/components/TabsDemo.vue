@@ -2,7 +2,7 @@
   <Demo title="标签页 Tabs" :demo-list="demoList"/>
 </template>
 <script lang="ts">
-import {defineComponent, ref} from "vue";
+import {defineComponent, ref, shallowRef} from "vue";
 import Tabs1Demo from "../demo-code/Tabs1Demo.vue";
 import Demo, {DemoType} from "./Demo.vue";
 
@@ -11,7 +11,7 @@ export default defineComponent({
   components: {Demo},
   setup() {
     const demoList = ref<DemoType[]>([
-      {codeVisible: false, title: '基本使用', component: Tabs1Demo}
+      {codeVisible: false, title: '基本使用', component: shallowRef(Tabs1Demo)}
     ]);
     return {
       demoList
