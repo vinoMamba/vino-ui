@@ -2,52 +2,61 @@
   <div class="wrapper">
     <Nav class="doc-nav" :showMenuButton="true"></Nav>
     <div class="content-wrapper">
-      <aside :class="{asideToggle: toggleState }">
+      <aside :class="{ asideToggle: toggleState }">
         <h4>文档</h4>
         <ul>
           <li @click="closeAside" v-for="item in menuList" :key="item.link">
-            <router-link :to="`/doc/${item.link}`">{{ item.title }}</router-link>
+            <router-link :to="`/doc/${item.link}`">{{
+              item.title
+            }}</router-link>
           </li>
         </ul>
         <h4>组件</h4>
         <ul>
-          <li @click="closeAside" v-for="item in componentList" :key="item.link">
-            <router-link :to="`/doc/${item.link}`">{{ item.title }} <span>{{ item.enTitle }}</span></router-link>
+          <li
+            @click="closeAside"
+            v-for="item in componentList"
+            :key="item.link"
+          >
+            <router-link :to="`/doc/${item.link}`"
+              >{{ item.title }} <span>{{ item.enTitle }}</span></router-link
+            >
           </li>
         </ul>
       </aside>
-      <main :class="{mainToggle: toggleState}">
-        <router-view/>
+      <main :class="{ mainToggle: toggleState }">
+        <router-view />
       </main>
     </div>
   </div>
 </template>
 <script lang="ts">
-import {defineComponent, ref} from "vue";
+import { defineComponent, ref } from "vue";
 import Nav from "../components/Nav.vue";
-import {useToggleInject} from "../hooks";
+import { useToggleInject } from "../hooks";
 
 export default defineComponent({
   name: "Doc",
-  components: {Nav},
+  components: { Nav },
   setup() {
     const menuList = ref([
-      {link: "intro", title: "项目介绍"},
-      {link: "install", title: "安装"},
-      {link: "use", title: "使用"}
+      { link: "intro", title: "项目介绍" },
+      { link: "install", title: "安装" },
+      { link: "use", title: "使用" },
     ]);
     const componentList = ref([
-      {link: "button", title: "按钮", enTitle: "Button"},
-      {link: "input", title: "输入框", enTitle: "Input"},
-      {link: "layout", title: "布局", enTitle: "Layout"},
-      {link: "tabs", title: "标签页", enTitle: "Tabs"},
-      {link: "popover", title: "弹出信息", enTitle: "Popover"},
-      {link: "cascader", title: "无限级联选择", enTitle: "Cascader"},
-      {link: "nav", title: "菜单", enTitle: "Nav"},
-      {link: "slides", title: "轮播组件", enTitle: "Slides"},
-      {link: "date-picker", title: "日期选择器", enTitle: "DatePicker"},
+      { link: "button", title: "按钮", enTitle: "Button" },
+      { link: "input", title: "输入框", enTitle: "Input" },
+      { link: "layout", title: "布局", enTitle: "Layout" },
+      { link: "tabs", title: "标签页", enTitle: "Tabs" },
+      { link: "popover", title: "弹出信息", enTitle: "Popover" },
+      { link: "cascader", title: "无限级联选择", enTitle: "Cascader" },
+      { link: "nav", title: "菜单", enTitle: "Nav" },
+      { link: "slides", title: "轮播组件", enTitle: "Slides" },
+      { link: "date-picker", title: "日期选择器", enTitle: "DatePicker" },
+      { link: "collapse", title: "手风琴", enTitle: "Collapse" },
     ]);
-    const {toggleState} = useToggleInject();
+    const { toggleState } = useToggleInject();
     const closeAside = () => {
       toggleState.value = !toggleState.value;
     };
@@ -55,7 +64,7 @@ export default defineComponent({
       toggleState,
       closeAside,
       menuList,
-      componentList
+      componentList,
     };
   },
 });
@@ -117,7 +126,6 @@ export default defineComponent({
               span {
                 color: white;
               }
-
             }
           }
         }

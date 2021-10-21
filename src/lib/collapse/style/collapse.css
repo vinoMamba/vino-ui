@@ -1,0 +1,19 @@
+@import "../../index.css";
+
+.v-collapse {
+  @apply border rounded-md border-gray-400;
+}
+
+.v-collapse-item {
+}
+
+.v-collapse-item:first-child {
+  @apply rounded-tl-md rounded-tr-md border-red-500;
+}
+
+.v-collapse-item-title {
+  @apply border border-gray-400;
+  margin-top: -1px;
+  margin-left: -1px;
+  margin-right: -1px;
+}

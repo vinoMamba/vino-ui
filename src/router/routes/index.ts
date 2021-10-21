@@ -67,6 +67,10 @@ const DocRouter: RouteRecordRaw = {
       path: "/doc/date-picker",
       component: () => import("/src/components/DatePickerDemo.vue"),
     },
+    {
+      path: "/doc/collapse",
+      component: () => import("/src/components/CollapseDemo.vue"),
+    },
   ],
 };
 const basicRoutes = [RootRouter, HomeRouter];
