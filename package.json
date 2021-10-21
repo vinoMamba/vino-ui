@@ -1,6 +1,6 @@
 {
-  "name": "vino-test-ui-1",
-  "version": "0.0.17",
+  "name": "vino-ui-next",
+  "version": "0.0.2",
   "description": "A Vue 3 Component Library, Not too Naive",
   "author": "vinoMamba",
   "files": [
