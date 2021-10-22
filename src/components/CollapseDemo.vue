@@ -1,8 +1,9 @@
 <template>
-  <v-collapse>
-    <v-collapse-item title="标题一">内容一</v-collapse-item>
-    <v-collapse-item title="标题二">内容二</v-collapse-item>
-    <v-collapse-item title="标题三">内容三</v-collapse-item>
+  {{ selected }}
+  <v-collapse v-model:selected="selected" :single="true">
+    <v-collapse-item title="标题一" name="1">内容一</v-collapse-item>
+    <v-collapse-item title="标题二" name="2">内容二</v-collapse-item>
+    <v-collapse-item title="标题三" name="3">内容三</v-collapse-item>
   </v-collapse>
 </template>
 <script lang="ts">
@@ -15,6 +16,7 @@ export default defineComponent({
   name: "ButtonDemo",
   components: { Demo, VCollapse, VCollapseItem },
   setup() {
+    const selected = ref<String[]>(["1"]);
     const demoList = ref<DemoType[]>([
       {
         codeVisible: false,
@@ -24,6 +26,7 @@ export default defineComponent({
     ]);
     return {
       demoList,
+      selected,
     };
   },
 });
