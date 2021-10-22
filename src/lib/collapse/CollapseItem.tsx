@@ -1,5 +1,5 @@
-import { defineComponent } from "vue";
-import "./style/collapse.css"
+import { defineComponent, ref } from "vue";
+import "./style/collapse.css";
 
 const collapseItemProps = {
   title: {
@@ -12,12 +12,20 @@ const CollapseItem = defineComponent({
   name: "CollapseItem",
   props: collapseItemProps,
   setup(props, { slots }) {
+    const contentVisible = ref(false);
+    const toggleContent = () => {
+      contentVisible.value = !contentVisible.value;
+    };
     return () => (
       <div class="v-collapse-item">
-        <div class="v-collapse-item-title">{props.title}</div>
-        <div class="v-collapse-item-content">
-          {slots.default && slots.default()}
+        <div class="v-collapse-item-title" onClick={toggleContent}>
+          {props.title}
         </div>
+        {contentVisible.value && (
+          <div class="v-collapse-item-content">
+            {slots.default && slots.default()}
+          </div>
+        )}
       </div>
     );
   },
