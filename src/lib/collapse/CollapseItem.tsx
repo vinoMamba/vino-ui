@@ -61,11 +61,13 @@ const CollapseItem = defineComponent({
           />
           {props.title}
         </div>
-        {contentVisible.value && (
-          <div class="v-collapse-item-content">
-            {slots.default && slots.default()}
-          </div>
-        )}
+        <transition name="fade">
+          {contentVisible.value && (
+            <div class="v-collapse-item-content">
+              {slots.default && slots.default()}
+            </div>
+          )}
+        </transition>
       </div>
     );
   },

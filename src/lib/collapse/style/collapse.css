@@ -8,7 +8,7 @@
 }
 
 .v-collapse-item-title {
-  @apply border border-gray-400 px-4 flex items-center;
+  @apply border border-gray-400 px-4 flex items-center text-gray-700;
   @apply bg-gray-100;
   margin-top: -1px;
   margin-left: -1px;
@@ -32,4 +32,21 @@
   margin-bottom: -1px;
 }
 .v-collapse-item-content {
+  @apply text-gray-600;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.2s;
+  max-height: 500px;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+  max-height: 0px;
+}
+
+.fade-enter-to,
+.fade-leave {
+  opacity: 1;
+  max-height: 500px;
 }

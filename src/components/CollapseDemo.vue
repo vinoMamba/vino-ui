@@ -1,14 +1,10 @@
 <template>
-  {{ selected }}
-  <v-collapse v-model:selected="selected" :single="true">
-    <v-collapse-item title="标题一" name="1">内容一</v-collapse-item>
-    <v-collapse-item title="标题二" name="2">内容二</v-collapse-item>
-    <v-collapse-item title="标题三" name="3">内容三</v-collapse-item>
-  </v-collapse>
+  <Demo title="折叠面板 Collapse" :demo-list="demoList" />
 </template>
 <script lang="ts">
 import { defineComponent, ref, shallowRef } from "vue";
 import Collapse1Demo from "../demo-code/Collapse1Demo.vue";
+import Collapse2Demo from "../demo-code/Collapse2Demo.vue";
 import { VCollapse, VCollapseItem } from "../lib";
 import Demo, { DemoType } from "./Demo.vue";
 
@@ -16,17 +12,20 @@ export default defineComponent({
   name: "ButtonDemo",
   components: { Demo, VCollapse, VCollapseItem },
   setup() {
-    const selected = ref<String[]>(["1"]);
     const demoList = ref<DemoType[]>([
       {
         codeVisible: false,
-        title: "基础按钮，可以disabled属性",
+        title: "基础使用，可展开多个item",
         component: shallowRef(Collapse1Demo),
+      },
+      {
+        codeVisible: false,
+        title: "设置单选，每次只展示一个item",
+        component: shallowRef(Collapse2Demo),
       },
     ]);
     return {
       demoList,
-      selected,
     };
   },
 });

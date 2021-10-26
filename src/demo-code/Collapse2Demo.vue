@@ -1,5 +1,5 @@
 <template>
-  <v-collapse v-model:selected="selected">
+  <v-collapse v-model:selected="selected" :single="true">
     <v-collapse-item title="标题一" name="1">
       　　湖人总冠军是怎么回事呢？湖人相信大家都很熟悉，但是湖人
       总冠军是怎么回事呢，下面就让小编带大家一起了解吧。湖人
