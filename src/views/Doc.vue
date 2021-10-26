@@ -48,13 +48,13 @@ export default defineComponent({
       { link: "button", title: "按钮", enTitle: "Button" },
       { link: "input", title: "输入框", enTitle: "Input" },
       { link: "layout", title: "布局", enTitle: "Layout" },
+      { link: "collapse", title: "折叠面板", enTitle: "Collapse" },
       { link: "tabs", title: "标签页", enTitle: "Tabs" },
       { link: "popover", title: "弹出信息", enTitle: "Popover" },
       { link: "cascader", title: "无限级联选择", enTitle: "Cascader" },
       { link: "nav", title: "菜单", enTitle: "Nav" },
       { link: "slides", title: "轮播组件", enTitle: "Slides" },
       { link: "date-picker", title: "日期选择器", enTitle: "DatePicker" },
-      { link: "collapse", title: "手风琴", enTitle: "Collapse" },
     ]);
     const { toggleState } = useToggleInject();
     const closeAside = () => {
