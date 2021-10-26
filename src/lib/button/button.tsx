@@ -4,15 +4,15 @@ import { VIcon } from "..";
 
 const buttonProps = {
   theme: {
-    type: String,
+    type: String as PropType<"button" | "link" | "text">,
     default: "button",
   },
   size: {
-    type: String,
+    type: String as PropType<"normal" | "larger" | "small">,
     default: "normal",
   },
   level: {
-    type: String,
+    type: String as PropType<"normal" | "success" | "warning" | "error">,
     default: "normal",
   },
   loading: {
