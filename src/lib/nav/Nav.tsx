@@ -32,11 +32,10 @@ const Nav = defineComponent({
     };
     const addSelected = (name: string) => {
       if (props.multiple) {
-        if (!props.selected.includes(name)) {
-          const copy = JSON.parse(JSON.stringify(props.selected));
-          copy.push(name);
-          emit("update:selected", copy);
-        }
+        const copy = JSON.parse(JSON.stringify(props.selected));
+        const index = copy.indexOf(name);
+        props.selected.includes(name) ? copy.splice(index, 1) : copy.push(name);
+        emit("update:selected", copy);
       } else {
         emit("update:selected", [name]);
       }

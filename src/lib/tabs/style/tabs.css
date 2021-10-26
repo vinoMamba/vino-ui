@@ -20,5 +20,5 @@
 }
 
 .v-tab-content {
-  @apply border p-4 border-gray-400;
+  @apply border p-4 border-gray-300;
 }

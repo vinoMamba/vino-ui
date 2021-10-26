@@ -1,4 +1,5 @@
 import { defineComponent } from "vue";
+import "./style/tabs.css";
 
 const tabProps = {
   title: {

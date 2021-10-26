@@ -28,7 +28,7 @@ export default defineComponent({
     const apiList = ref<ApiType[]>([
       {
         attr: "v-model:selected",
-        notes: "选则打开的item",
+        notes: "选择打开的item",
         type: "String[]",
         optionalValue: "-",
         default: "[]",
