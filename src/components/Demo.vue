@@ -3,24 +3,34 @@
   <div class="demo" v-for="demo in demoList" :key="demo.title">
     <h2>{{ demo.title }}</h2>
     <div class="demo-component">
-      <component :is="demo.component"/>
+      <component :is="demo.component" />
     </div>
     <div class="demo-actions">
-      <div class="demo-actions-button" @click="demo.codeVisible = false" v-if="demo.codeVisible">
+      <div
+        class="demo-actions-button"
+        @click="demo.codeVisible = false"
+        v-if="demo.codeVisible"
+      >
         隐藏示例代码
       </div>
-      <div class="demo-actions-button-watch" @click="demo.codeVisible = true" v-else>
+      <div
+        class="demo-actions-button-watch"
+        @click="demo.codeVisible = true"
+        v-else
+      >
         查看示例代码
       </div>
     </div>
-    <div class="demo-code" v-if="demo.codeVisible">
-      <pre class="language-html" v-html="getHtml(demo.component)"/>
-    </div>
+    <transition name="code-source">
+      <div class="demo-code" v-if="demo.codeVisible">
+        <pre class="language-html" v-html="getHtml(demo.component)" />
+      </div>
+    </transition>
   </div>
 </template>
 
 <script lang="ts">
-import {defineComponent, PropType} from "vue";
+import { defineComponent, PropType } from "vue";
 import "prismjs";
 import "prismjs/themes/prism-tomorrow.css";
 
@@ -28,17 +38,16 @@ export type DemoType = {
   codeVisible: boolean;
   title: string;
   component: Object;
-}
+};
 
 const Prism = (window as any).Prism;
-
 
 export default defineComponent({
   name: "Demo",
   props: {
     demoList: {
       type: Array as PropType<DemoType[]>,
-      default: () => []
+      default: () => [],
     },
     title: {
       type: String,
@@ -48,9 +57,9 @@ export default defineComponent({
   setup() {
     const getHtml = (component: any) => {
       return Prism.highlight(
-          component.__sourceCode,
-          Prism.languages.html,
-          "html"
+        component.__sourceCode,
+        Prism.languages.html,
+        "html"
       );
     };
     return {
@@ -62,6 +71,23 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.code-source-enter-active,
+.code-source-leave-active {
+  transition: all 0.3s;
+  max-height: 1000px;
+}
+.code-source-enter,
+.code-source-leave-to {
+  opacity: 0;
+  max-height: 0px;
+}
+
+.code-source-enter-to,
+.code-source-leave {
+  opacity: 1;
+  max-height: 1000px;
+}
+
 $border-color: #d9d9d9;
 .title {
   font-size: 24px;
@@ -86,7 +112,7 @@ $border-color: #d9d9d9;
   }
 
   > h2 {
-    color: rgb(0, 0, 0, .6);
+    color: rgb(0, 0, 0, 0.6);
     font-size: 15px;
     font-weight: 500;
     padding: 8px 16px;
