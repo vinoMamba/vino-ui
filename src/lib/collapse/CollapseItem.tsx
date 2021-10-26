@@ -5,9 +5,11 @@ import {
   onUpdated,
   onMounted,
   getCurrentInstance,
+  Transition,
 } from "vue";
 import { collapseInjectionKey } from "./Collapse";
 import "./style/collapse.css";
+import { VIcon } from "..";
 
 const collapseItemProps = {
   title: {
@@ -22,6 +24,7 @@ const collapseItemProps = {
 
 const CollapseItem = defineComponent({
   name: "CollapseItem",
+  components: { VIcon, Transition },
   props: collapseItemProps,
   setup(props, { slots }) {
     const instance = getCurrentInstance();
@@ -49,6 +52,13 @@ const CollapseItem = defineComponent({
     return () => (
       <div class="v-collapse-item">
         <div class="v-collapse-item-title" onClick={toggleContent}>
+          <v-icon
+            name="right"
+            class={{
+              "v-collapse-item-title-icon": true,
+              "v-collapse-item-title-icon-selected": contentVisible.value,
+            }}
+          />
           {props.title}
         </div>
         {contentVisible.value && (

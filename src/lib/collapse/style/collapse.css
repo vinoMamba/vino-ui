@@ -9,11 +9,20 @@
 
 .v-collapse-item-title {
   @apply border border-gray-400 px-4 flex items-center;
+  @apply bg-gray-100;
   margin-top: -1px;
   margin-left: -1px;
   margin-right: -1px;
   min-height: 32px;
 }
+
+.v-collapse-item-title-icon {
+  @apply transition-all duration-500 ease-in-out mr-1;
+}
+.v-collapse-item-title-icon-selected {
+  @apply rotate-90;
+}
+
 .v-collapse-item:first-child > .v-collapse-item-title {
   @apply rounded-tl-md rounded-tr-md;
 }
