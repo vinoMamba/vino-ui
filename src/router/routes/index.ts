@@ -71,6 +71,10 @@ const DocRouter: RouteRecordRaw = {
       path: "/doc/collapse",
       component: () => import("/src/components/CollapseDemo.vue"),
     },
+    {
+      path: "/doc/userTree",
+      component: () => import("/src/components/UserTreeDemo.vue"),
+    },
   ],
 };
 const basicRoutes = [RootRouter, HomeRouter];

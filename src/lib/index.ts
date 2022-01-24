@@ -18,3 +18,4 @@ export { default as VPopover } from "./popover/Popover";
 export { default as VDatePicker } from "./datePicker/DatePicker";
 export { default as VCollapse } from "./collapse/Collapse";
 export { default as VCollapseItem } from "./collapse/CollapseItem";
+export { default as VUserTree } from "./userTree/UserTree";

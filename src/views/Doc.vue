@@ -55,6 +55,7 @@ export default defineComponent({
       { link: "cascader", title: "无限级联选择", enTitle: "Cascader" },
       { link: "slides", title: "轮播组件", enTitle: "Slides" },
       { link: "date-picker", title: "日期选择器", enTitle: "DatePicker" },
+      { link: "userTree", title: "人员选择", enTitle: "userTree" },
     ]);
     const { toggleState } = useToggleInject();
     const closeAside = () => {
